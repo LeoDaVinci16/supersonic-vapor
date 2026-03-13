@@ -1,0 +1,23 @@
+@media print {
+  body {
+    margin: 1in;
+    font-family: Arial, sans-serif;
+  }
+
+  h1, h2, h3 {
+    page-break-after: avoid;
+  }
+
+  .figure {
+    page-break-inside: avoid;
+  }
+
+  footer::after {
+    content: "Page " counter(page);
+    position: fixed;
+    bottom: 0;
+    right: 0;
+    font-size: 0.8em;
+    color: #666;
+  }
+}

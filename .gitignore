@@ -1,0 +1,31 @@
+*.quarto_ipynb*
+_quarto_cache/
+
+# Quarto / Jupyter generated files
+report_generated.quarto_ipynb_*
+report_generated_files/
+report_vapor.quarto_ipynb_*
+report_vapor_files/
+
+# LaTeX generated files
+*.aux
+*.log
+*.synctex.gz
+*.tex
+
+# PDFs
+*.pdf
+
+# Excel files
+*.xlsx
+
+# Images
+*.png
+*.jpg
+*.jpeg
+*.gif
+*.svg
+*.webp
+
+# Other common caches
+*.ipynb_checkpoints/

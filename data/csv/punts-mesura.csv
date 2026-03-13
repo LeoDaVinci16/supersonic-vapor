@@ -1,0 +1,12 @@
+x,y,id,planta-numero,id_vell,source,target,DN
+10,10,STE-1,E800,PM-V-1,caldera,E800,20
+20,20,STE-2,Secadores,PM-V-2,caldera,secadores,20
+30,30,STE-3,PEC,PM-V-3,caldera,PEC,20
+40,40,STE-4,Nautas,PM-V-4,secadores,Nautas,20
+50,50,STE-5,V800,PM-V-5,colector,V800,20
+60,60,STE-6,V700,PM-V-6,colector,V700,20
+70,70,STE-7,P400,PM-V-7,colector,P400,20
+80,80,STE-8,Atomizador 1a planta,PM-V-8,secadores,atomizador,20
+90,90,STE-9,Atomizador 2a planta,PM-V-9,secadores,atomizador,20
+100,100,STE-10,S600,PM-V-10,secadores,S600,20
+110,110,STE-11,S6000,PM-V-11,secadores,S6000,20
