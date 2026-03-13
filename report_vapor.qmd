@@ -1,7 +1,18 @@
 ---
 title: "Report vapor"
 author: Arnau Coronado Nadal
-format: html
+
+execute:
+  cache: false
+
+format:
+  html:
+    toc: true
+    code-fold: true
+
+  pdf:
+    css: print.css
+    toc: true
 ---
 
 # Estudi de cabals Euromed

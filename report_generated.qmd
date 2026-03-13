@@ -1,11 +1,21 @@
 ---
 title: "Automated Measurement Report"
-format: html
+author: Arnau Coronado Nadal
+execute:
+  cache: false
+  cache-dir: _quarto_cache
+format:
+  html:
+    toc: true
+    code-fold: true
+  pdf:
+    css: print.css
+    toc: true
 ---
 
 ## E800
 
-Next I will show the plots done on the measurement point E800.
+Plots for measurement point E800:
 
 ### 20251204_141433_STE-01_E800.csv (2025-12-04)
 
@@ -16,13 +26,32 @@ Next I will show the plots done on the measurement point E800.
 import sys, os
 sys.path.append(os.path.abspath("src"))
 from create_plots import load_csv, create_plotly_plot
+from IPython.display import Image, display
+import plotly.io as pio
 
 csv_path = r"data/raw\20251204_141433_STE-01_E800.csv"
 variable = "A Flow velocity [m/s]"
 
 df = load_csv(csv_path)
 fig = create_plotly_plot(df, variable, csv_path)
-fig 
+
+# Detect Quarto output format
+quarto_format = os.environ.get("QUARTO_FORMAT", "").lower()
+is_pdf = quarto_format in ["pdf", "latex"]
+
+if is_pdf:
+    os.makedirs(r"outputs", exist_ok=True)
+    png_path = os.path.join(r"outputs", os.path.basename(csv_path).replace(".csv", ".png"))
+    try:
+        fig.write_image(png_path, width=900, height=450, scale=2)
+        display(Image(filename=png_path))
+    except Exception as e:
+        print("Could not export figure. Make sure 'kaleido' is installed.")
+        print(e)
+else:
+    # Interactive HTML plot
+    pio.renderers.default = "notebook_connected"
+    fig.show()
 ```
 
 ### 20251205_044520_STE-01_E800.csv (2025-12-05)
@@ -34,18 +63,37 @@ fig
 import sys, os
 sys.path.append(os.path.abspath("src"))
 from create_plots import load_csv, create_plotly_plot
+from IPython.display import Image, display
+import plotly.io as pio
 
 csv_path = r"data/raw\20251205_044520_STE-01_E800.csv"
 variable = "A Flow velocity [m/s]"
 
 df = load_csv(csv_path)
 fig = create_plotly_plot(df, variable, csv_path)
-fig 
+
+# Detect Quarto output format
+quarto_format = os.environ.get("QUARTO_FORMAT", "").lower()
+is_pdf = quarto_format in ["pdf", "latex"]
+
+if is_pdf:
+    os.makedirs(r"outputs", exist_ok=True)
+    png_path = os.path.join(r"outputs", os.path.basename(csv_path).replace(".csv", ".png"))
+    try:
+        fig.write_image(png_path, width=900, height=450, scale=2)
+        display(Image(filename=png_path))
+    except Exception as e:
+        print("Could not export figure. Make sure 'kaleido' is installed.")
+        print(e)
+else:
+    # Interactive HTML plot
+    pio.renderers.default = "notebook_connected"
+    fig.show()
 ```
 
 ## PEC
 
-Next I will show the plots done on the measurement point PEC.
+Plots for measurement point PEC:
 
 ### 20251201_155248_STE-03_PEC.csv (2025-12-01)
 
@@ -56,18 +104,37 @@ Next I will show the plots done on the measurement point PEC.
 import sys, os
 sys.path.append(os.path.abspath("src"))
 from create_plots import load_csv, create_plotly_plot
+from IPython.display import Image, display
+import plotly.io as pio
 
 csv_path = r"data/raw\20251201_155248_STE-03_PEC.csv"
 variable = "A Flow velocity [m/s]"
 
 df = load_csv(csv_path)
 fig = create_plotly_plot(df, variable, csv_path)
-fig 
+
+# Detect Quarto output format
+quarto_format = os.environ.get("QUARTO_FORMAT", "").lower()
+is_pdf = quarto_format in ["pdf", "latex"]
+
+if is_pdf:
+    os.makedirs(r"outputs", exist_ok=True)
+    png_path = os.path.join(r"outputs", os.path.basename(csv_path).replace(".csv", ".png"))
+    try:
+        fig.write_image(png_path, width=900, height=450, scale=2)
+        display(Image(filename=png_path))
+    except Exception as e:
+        print("Could not export figure. Make sure 'kaleido' is installed.")
+        print(e)
+else:
+    # Interactive HTML plot
+    pio.renderers.default = "notebook_connected"
+    fig.show()
 ```
 
 ## STE-02
 
-Next I will show the plots done on the measurement point STE-02.
+Plots for measurement point STE-02:
 
 ### 20251104_103620_STE-02.csv (2025-11-04)
 
@@ -78,13 +145,32 @@ Next I will show the plots done on the measurement point STE-02.
 import sys, os
 sys.path.append(os.path.abspath("src"))
 from create_plots import load_csv, create_plotly_plot
+from IPython.display import Image, display
+import plotly.io as pio
 
 csv_path = r"data/raw\20251104_103620_STE-02.csv"
 variable = "A Flow velocity [m/s]"
 
 df = load_csv(csv_path)
 fig = create_plotly_plot(df, variable, csv_path)
-fig 
+
+# Detect Quarto output format
+quarto_format = os.environ.get("QUARTO_FORMAT", "").lower()
+is_pdf = quarto_format in ["pdf", "latex"]
+
+if is_pdf:
+    os.makedirs(r"outputs", exist_ok=True)
+    png_path = os.path.join(r"outputs", os.path.basename(csv_path).replace(".csv", ".png"))
+    try:
+        fig.write_image(png_path, width=900, height=450, scale=2)
+        display(Image(filename=png_path))
+    except Exception as e:
+        print("Could not export figure. Make sure 'kaleido' is installed.")
+        print(e)
+else:
+    # Interactive HTML plot
+    pio.renderers.default = "notebook_connected"
+    fig.show()
 ```
 
 ### 20251114_112101_STE-02.csv (2025-11-14)
@@ -96,13 +182,32 @@ fig
 import sys, os
 sys.path.append(os.path.abspath("src"))
 from create_plots import load_csv, create_plotly_plot
+from IPython.display import Image, display
+import plotly.io as pio
 
 csv_path = r"data/raw\20251114_112101_STE-02.csv"
 variable = "A Flow velocity [m/s]"
 
 df = load_csv(csv_path)
 fig = create_plotly_plot(df, variable, csv_path)
-fig 
+
+# Detect Quarto output format
+quarto_format = os.environ.get("QUARTO_FORMAT", "").lower()
+is_pdf = quarto_format in ["pdf", "latex"]
+
+if is_pdf:
+    os.makedirs(r"outputs", exist_ok=True)
+    png_path = os.path.join(r"outputs", os.path.basename(csv_path).replace(".csv", ".png"))
+    try:
+        fig.write_image(png_path, width=900, height=450, scale=2)
+        display(Image(filename=png_path))
+    except Exception as e:
+        print("Could not export figure. Make sure 'kaleido' is installed.")
+        print(e)
+else:
+    # Interactive HTML plot
+    pio.renderers.default = "notebook_connected"
+    fig.show()
 ```
 
 ### 20251117_092425_STE-02.csv (2025-11-17)
@@ -114,18 +219,37 @@ fig
 import sys, os
 sys.path.append(os.path.abspath("src"))
 from create_plots import load_csv, create_plotly_plot
+from IPython.display import Image, display
+import plotly.io as pio
 
 csv_path = r"data/raw\20251117_092425_STE-02.csv"
 variable = "A Flow velocity [m/s]"
 
 df = load_csv(csv_path)
 fig = create_plotly_plot(df, variable, csv_path)
-fig 
+
+# Detect Quarto output format
+quarto_format = os.environ.get("QUARTO_FORMAT", "").lower()
+is_pdf = quarto_format in ["pdf", "latex"]
+
+if is_pdf:
+    os.makedirs(r"outputs", exist_ok=True)
+    png_path = os.path.join(r"outputs", os.path.basename(csv_path).replace(".csv", ".png"))
+    try:
+        fig.write_image(png_path, width=900, height=450, scale=2)
+        display(Image(filename=png_path))
+    except Exception as e:
+        print("Could not export figure. Make sure 'kaleido' is installed.")
+        print(e)
+else:
+    # Interactive HTML plot
+    pio.renderers.default = "notebook_connected"
+    fig.show()
 ```
 
 ## STE-03
 
-Next I will show the plots done on the measurement point STE-03.
+Plots for measurement point STE-03:
 
 ### 20251027_143957_STE-03.csv (2025-10-27)
 
@@ -136,13 +260,32 @@ Next I will show the plots done on the measurement point STE-03.
 import sys, os
 sys.path.append(os.path.abspath("src"))
 from create_plots import load_csv, create_plotly_plot
+from IPython.display import Image, display
+import plotly.io as pio
 
 csv_path = r"data/raw\20251027_143957_STE-03.csv"
 variable = "A Flow velocity [m/s]"
 
 df = load_csv(csv_path)
 fig = create_plotly_plot(df, variable, csv_path)
-fig 
+
+# Detect Quarto output format
+quarto_format = os.environ.get("QUARTO_FORMAT", "").lower()
+is_pdf = quarto_format in ["pdf", "latex"]
+
+if is_pdf:
+    os.makedirs(r"outputs", exist_ok=True)
+    png_path = os.path.join(r"outputs", os.path.basename(csv_path).replace(".csv", ".png"))
+    try:
+        fig.write_image(png_path, width=900, height=450, scale=2)
+        display(Image(filename=png_path))
+    except Exception as e:
+        print("Could not export figure. Make sure 'kaleido' is installed.")
+        print(e)
+else:
+    # Interactive HTML plot
+    pio.renderers.default = "notebook_connected"
+    fig.show()
 ```
 
 ### 20251028_110853_STE-03.csv (2025-10-28)
@@ -154,13 +297,32 @@ fig
 import sys, os
 sys.path.append(os.path.abspath("src"))
 from create_plots import load_csv, create_plotly_plot
+from IPython.display import Image, display
+import plotly.io as pio
 
 csv_path = r"data/raw\20251028_110853_STE-03.csv"
 variable = "A Flow velocity [m/s]"
 
 df = load_csv(csv_path)
 fig = create_plotly_plot(df, variable, csv_path)
-fig 
+
+# Detect Quarto output format
+quarto_format = os.environ.get("QUARTO_FORMAT", "").lower()
+is_pdf = quarto_format in ["pdf", "latex"]
+
+if is_pdf:
+    os.makedirs(r"outputs", exist_ok=True)
+    png_path = os.path.join(r"outputs", os.path.basename(csv_path).replace(".csv", ".png"))
+    try:
+        fig.write_image(png_path, width=900, height=450, scale=2)
+        display(Image(filename=png_path))
+    except Exception as e:
+        print("Could not export figure. Make sure 'kaleido' is installed.")
+        print(e)
+else:
+    # Interactive HTML plot
+    pio.renderers.default = "notebook_connected"
+    fig.show()
 ```
 
 ### 20251103_125239_STE-03.csv (2025-11-03)
@@ -172,13 +334,32 @@ fig
 import sys, os
 sys.path.append(os.path.abspath("src"))
 from create_plots import load_csv, create_plotly_plot
+from IPython.display import Image, display
+import plotly.io as pio
 
 csv_path = r"data/raw\20251103_125239_STE-03.csv"
 variable = "A Flow velocity [m/s]"
 
 df = load_csv(csv_path)
 fig = create_plotly_plot(df, variable, csv_path)
-fig 
+
+# Detect Quarto output format
+quarto_format = os.environ.get("QUARTO_FORMAT", "").lower()
+is_pdf = quarto_format in ["pdf", "latex"]
+
+if is_pdf:
+    os.makedirs(r"outputs", exist_ok=True)
+    png_path = os.path.join(r"outputs", os.path.basename(csv_path).replace(".csv", ".png"))
+    try:
+        fig.write_image(png_path, width=900, height=450, scale=2)
+        display(Image(filename=png_path))
+    except Exception as e:
+        print("Could not export figure. Make sure 'kaleido' is installed.")
+        print(e)
+else:
+    # Interactive HTML plot
+    pio.renderers.default = "notebook_connected"
+    fig.show()
 ```
 
 ### 20251110_095343_STE-03.csv (2025-11-10)
@@ -190,13 +371,32 @@ fig
 import sys, os
 sys.path.append(os.path.abspath("src"))
 from create_plots import load_csv, create_plotly_plot
+from IPython.display import Image, display
+import plotly.io as pio
 
 csv_path = r"data/raw\20251110_095343_STE-03.csv"
 variable = "A Flow velocity [m/s]"
 
 df = load_csv(csv_path)
 fig = create_plotly_plot(df, variable, csv_path)
-fig 
+
+# Detect Quarto output format
+quarto_format = os.environ.get("QUARTO_FORMAT", "").lower()
+is_pdf = quarto_format in ["pdf", "latex"]
+
+if is_pdf:
+    os.makedirs(r"outputs", exist_ok=True)
+    png_path = os.path.join(r"outputs", os.path.basename(csv_path).replace(".csv", ".png"))
+    try:
+        fig.write_image(png_path, width=900, height=450, scale=2)
+        display(Image(filename=png_path))
+    except Exception as e:
+        print("Could not export figure. Make sure 'kaleido' is installed.")
+        print(e)
+else:
+    # Interactive HTML plot
+    pio.renderers.default = "notebook_connected"
+    fig.show()
 ```
 
 ### 20251111_110949_STE-03.csv (2025-11-11)
@@ -208,13 +408,32 @@ fig
 import sys, os
 sys.path.append(os.path.abspath("src"))
 from create_plots import load_csv, create_plotly_plot
+from IPython.display import Image, display
+import plotly.io as pio
 
 csv_path = r"data/raw\20251111_110949_STE-03.csv"
 variable = "A Flow velocity [m/s]"
 
 df = load_csv(csv_path)
 fig = create_plotly_plot(df, variable, csv_path)
-fig 
+
+# Detect Quarto output format
+quarto_format = os.environ.get("QUARTO_FORMAT", "").lower()
+is_pdf = quarto_format in ["pdf", "latex"]
+
+if is_pdf:
+    os.makedirs(r"outputs", exist_ok=True)
+    png_path = os.path.join(r"outputs", os.path.basename(csv_path).replace(".csv", ".png"))
+    try:
+        fig.write_image(png_path, width=900, height=450, scale=2)
+        display(Image(filename=png_path))
+    except Exception as e:
+        print("Could not export figure. Make sure 'kaleido' is installed.")
+        print(e)
+else:
+    # Interactive HTML plot
+    pio.renderers.default = "notebook_connected"
+    fig.show()
 ```
 
 ### 20251112_114717_STE-03.csv (2025-11-12)
@@ -226,13 +445,32 @@ fig
 import sys, os
 sys.path.append(os.path.abspath("src"))
 from create_plots import load_csv, create_plotly_plot
+from IPython.display import Image, display
+import plotly.io as pio
 
 csv_path = r"data/raw\20251112_114717_STE-03.csv"
 variable = "A Flow velocity [m/s]"
 
 df = load_csv(csv_path)
 fig = create_plotly_plot(df, variable, csv_path)
-fig 
+
+# Detect Quarto output format
+quarto_format = os.environ.get("QUARTO_FORMAT", "").lower()
+is_pdf = quarto_format in ["pdf", "latex"]
+
+if is_pdf:
+    os.makedirs(r"outputs", exist_ok=True)
+    png_path = os.path.join(r"outputs", os.path.basename(csv_path).replace(".csv", ".png"))
+    try:
+        fig.write_image(png_path, width=900, height=450, scale=2)
+        display(Image(filename=png_path))
+    except Exception as e:
+        print("Could not export figure. Make sure 'kaleido' is installed.")
+        print(e)
+else:
+    # Interactive HTML plot
+    pio.renderers.default = "notebook_connected"
+    fig.show()
 ```
 
 ### 20251112_122634_STE-03.csv (2025-11-12)
@@ -244,13 +482,32 @@ fig
 import sys, os
 sys.path.append(os.path.abspath("src"))
 from create_plots import load_csv, create_plotly_plot
+from IPython.display import Image, display
+import plotly.io as pio
 
 csv_path = r"data/raw\20251112_122634_STE-03.csv"
 variable = "A Flow velocity [m/s]"
 
 df = load_csv(csv_path)
 fig = create_plotly_plot(df, variable, csv_path)
-fig 
+
+# Detect Quarto output format
+quarto_format = os.environ.get("QUARTO_FORMAT", "").lower()
+is_pdf = quarto_format in ["pdf", "latex"]
+
+if is_pdf:
+    os.makedirs(r"outputs", exist_ok=True)
+    png_path = os.path.join(r"outputs", os.path.basename(csv_path).replace(".csv", ".png"))
+    try:
+        fig.write_image(png_path, width=900, height=450, scale=2)
+        display(Image(filename=png_path))
+    except Exception as e:
+        print("Could not export figure. Make sure 'kaleido' is installed.")
+        print(e)
+else:
+    # Interactive HTML plot
+    pio.renderers.default = "notebook_connected"
+    fig.show()
 ```
 
 ### 20251122_003137_STE-03.csv (2025-11-22)
@@ -262,13 +519,32 @@ fig
 import sys, os
 sys.path.append(os.path.abspath("src"))
 from create_plots import load_csv, create_plotly_plot
+from IPython.display import Image, display
+import plotly.io as pio
 
 csv_path = r"data/raw\20251122_003137_STE-03.csv"
 variable = "A Flow velocity [m/s]"
 
 df = load_csv(csv_path)
 fig = create_plotly_plot(df, variable, csv_path)
-fig 
+
+# Detect Quarto output format
+quarto_format = os.environ.get("QUARTO_FORMAT", "").lower()
+is_pdf = quarto_format in ["pdf", "latex"]
+
+if is_pdf:
+    os.makedirs(r"outputs", exist_ok=True)
+    png_path = os.path.join(r"outputs", os.path.basename(csv_path).replace(".csv", ".png"))
+    try:
+        fig.write_image(png_path, width=900, height=450, scale=2)
+        display(Image(filename=png_path))
+    except Exception as e:
+        print("Could not export figure. Make sure 'kaleido' is installed.")
+        print(e)
+else:
+    # Interactive HTML plot
+    pio.renderers.default = "notebook_connected"
+    fig.show()
 ```
 
 ### 20251126_141746_STE-03.csv (2025-11-26)
@@ -280,13 +556,32 @@ fig
 import sys, os
 sys.path.append(os.path.abspath("src"))
 from create_plots import load_csv, create_plotly_plot
+from IPython.display import Image, display
+import plotly.io as pio
 
 csv_path = r"data/raw\20251126_141746_STE-03.csv"
 variable = "A Flow velocity [m/s]"
 
 df = load_csv(csv_path)
 fig = create_plotly_plot(df, variable, csv_path)
-fig 
+
+# Detect Quarto output format
+quarto_format = os.environ.get("QUARTO_FORMAT", "").lower()
+is_pdf = quarto_format in ["pdf", "latex"]
+
+if is_pdf:
+    os.makedirs(r"outputs", exist_ok=True)
+    png_path = os.path.join(r"outputs", os.path.basename(csv_path).replace(".csv", ".png"))
+    try:
+        fig.write_image(png_path, width=900, height=450, scale=2)
+        display(Image(filename=png_path))
+    except Exception as e:
+        print("Could not export figure. Make sure 'kaleido' is installed.")
+        print(e)
+else:
+    # Interactive HTML plot
+    pio.renderers.default = "notebook_connected"
+    fig.show()
 ```
 
 ### 20251127_132919_STE-03.csv (2025-11-27)
@@ -298,13 +593,32 @@ fig
 import sys, os
 sys.path.append(os.path.abspath("src"))
 from create_plots import load_csv, create_plotly_plot
+from IPython.display import Image, display
+import plotly.io as pio
 
 csv_path = r"data/raw\20251127_132919_STE-03.csv"
 variable = "A Flow velocity [m/s]"
 
 df = load_csv(csv_path)
 fig = create_plotly_plot(df, variable, csv_path)
-fig 
+
+# Detect Quarto output format
+quarto_format = os.environ.get("QUARTO_FORMAT", "").lower()
+is_pdf = quarto_format in ["pdf", "latex"]
+
+if is_pdf:
+    os.makedirs(r"outputs", exist_ok=True)
+    png_path = os.path.join(r"outputs", os.path.basename(csv_path).replace(".csv", ".png"))
+    try:
+        fig.write_image(png_path, width=900, height=450, scale=2)
+        display(Image(filename=png_path))
+    except Exception as e:
+        print("Could not export figure. Make sure 'kaleido' is installed.")
+        print(e)
+else:
+    # Interactive HTML plot
+    pio.renderers.default = "notebook_connected"
+    fig.show()
 ```
 
 ### 20251127_133004_STE-03.csv (2025-11-27)
@@ -316,13 +630,32 @@ fig
 import sys, os
 sys.path.append(os.path.abspath("src"))
 from create_plots import load_csv, create_plotly_plot
+from IPython.display import Image, display
+import plotly.io as pio
 
 csv_path = r"data/raw\20251127_133004_STE-03.csv"
 variable = "A Flow velocity [m/s]"
 
 df = load_csv(csv_path)
 fig = create_plotly_plot(df, variable, csv_path)
-fig 
+
+# Detect Quarto output format
+quarto_format = os.environ.get("QUARTO_FORMAT", "").lower()
+is_pdf = quarto_format in ["pdf", "latex"]
+
+if is_pdf:
+    os.makedirs(r"outputs", exist_ok=True)
+    png_path = os.path.join(r"outputs", os.path.basename(csv_path).replace(".csv", ".png"))
+    try:
+        fig.write_image(png_path, width=900, height=450, scale=2)
+        display(Image(filename=png_path))
+    except Exception as e:
+        print("Could not export figure. Make sure 'kaleido' is installed.")
+        print(e)
+else:
+    # Interactive HTML plot
+    pio.renderers.default = "notebook_connected"
+    fig.show()
 ```
 
 ### 20260205_131455_STE-03.csv (2026-02-05)
@@ -334,18 +667,37 @@ fig
 import sys, os
 sys.path.append(os.path.abspath("src"))
 from create_plots import load_csv, create_plotly_plot
+from IPython.display import Image, display
+import plotly.io as pio
 
 csv_path = r"data/raw\20260205_131455_STE-03.csv"
 variable = "A Flow velocity [m/s]"
 
 df = load_csv(csv_path)
 fig = create_plotly_plot(df, variable, csv_path)
-fig 
+
+# Detect Quarto output format
+quarto_format = os.environ.get("QUARTO_FORMAT", "").lower()
+is_pdf = quarto_format in ["pdf", "latex"]
+
+if is_pdf:
+    os.makedirs(r"outputs", exist_ok=True)
+    png_path = os.path.join(r"outputs", os.path.basename(csv_path).replace(".csv", ".png"))
+    try:
+        fig.write_image(png_path, width=900, height=450, scale=2)
+        display(Image(filename=png_path))
+    except Exception as e:
+        print("Could not export figure. Make sure 'kaleido' is installed.")
+        print(e)
+else:
+    # Interactive HTML plot
+    pio.renderers.default = "notebook_connected"
+    fig.show()
 ```
 
 ## STE-04
 
-Next I will show the plots done on the measurement point STE-04.
+Plots for measurement point STE-04:
 
 ### 20251007_100341_STE-04.csv (2025-10-07)
 
@@ -356,13 +708,32 @@ Next I will show the plots done on the measurement point STE-04.
 import sys, os
 sys.path.append(os.path.abspath("src"))
 from create_plots import load_csv, create_plotly_plot
+from IPython.display import Image, display
+import plotly.io as pio
 
 csv_path = r"data/raw\20251007_100341_STE-04.csv"
 variable = "A Flow velocity [m/s]"
 
 df = load_csv(csv_path)
 fig = create_plotly_plot(df, variable, csv_path)
-fig 
+
+# Detect Quarto output format
+quarto_format = os.environ.get("QUARTO_FORMAT", "").lower()
+is_pdf = quarto_format in ["pdf", "latex"]
+
+if is_pdf:
+    os.makedirs(r"outputs", exist_ok=True)
+    png_path = os.path.join(r"outputs", os.path.basename(csv_path).replace(".csv", ".png"))
+    try:
+        fig.write_image(png_path, width=900, height=450, scale=2)
+        display(Image(filename=png_path))
+    except Exception as e:
+        print("Could not export figure. Make sure 'kaleido' is installed.")
+        print(e)
+else:
+    # Interactive HTML plot
+    pio.renderers.default = "notebook_connected"
+    fig.show()
 ```
 
 ### 20251008_095114_STE-04.csv (2025-10-08)
@@ -374,13 +745,32 @@ fig
 import sys, os
 sys.path.append(os.path.abspath("src"))
 from create_plots import load_csv, create_plotly_plot
+from IPython.display import Image, display
+import plotly.io as pio
 
 csv_path = r"data/raw\20251008_095114_STE-04.csv"
 variable = "A Flow velocity [m/s]"
 
 df = load_csv(csv_path)
 fig = create_plotly_plot(df, variable, csv_path)
-fig 
+
+# Detect Quarto output format
+quarto_format = os.environ.get("QUARTO_FORMAT", "").lower()
+is_pdf = quarto_format in ["pdf", "latex"]
+
+if is_pdf:
+    os.makedirs(r"outputs", exist_ok=True)
+    png_path = os.path.join(r"outputs", os.path.basename(csv_path).replace(".csv", ".png"))
+    try:
+        fig.write_image(png_path, width=900, height=450, scale=2)
+        display(Image(filename=png_path))
+    except Exception as e:
+        print("Could not export figure. Make sure 'kaleido' is installed.")
+        print(e)
+else:
+    # Interactive HTML plot
+    pio.renderers.default = "notebook_connected"
+    fig.show()
 ```
 
 ### 20251008_115126_STE-04.csv (2025-10-08)
@@ -392,13 +782,32 @@ fig
 import sys, os
 sys.path.append(os.path.abspath("src"))
 from create_plots import load_csv, create_plotly_plot
+from IPython.display import Image, display
+import plotly.io as pio
 
 csv_path = r"data/raw\20251008_115126_STE-04.csv"
 variable = "A Flow velocity [m/s]"
 
 df = load_csv(csv_path)
 fig = create_plotly_plot(df, variable, csv_path)
-fig 
+
+# Detect Quarto output format
+quarto_format = os.environ.get("QUARTO_FORMAT", "").lower()
+is_pdf = quarto_format in ["pdf", "latex"]
+
+if is_pdf:
+    os.makedirs(r"outputs", exist_ok=True)
+    png_path = os.path.join(r"outputs", os.path.basename(csv_path).replace(".csv", ".png"))
+    try:
+        fig.write_image(png_path, width=900, height=450, scale=2)
+        display(Image(filename=png_path))
+    except Exception as e:
+        print("Could not export figure. Make sure 'kaleido' is installed.")
+        print(e)
+else:
+    # Interactive HTML plot
+    pio.renderers.default = "notebook_connected"
+    fig.show()
 ```
 
 ### 20251112_130310_STE-04.csv (2025-11-12)
@@ -410,18 +819,37 @@ fig
 import sys, os
 sys.path.append(os.path.abspath("src"))
 from create_plots import load_csv, create_plotly_plot
+from IPython.display import Image, display
+import plotly.io as pio
 
 csv_path = r"data/raw\20251112_130310_STE-04.csv"
 variable = "A Flow velocity [m/s]"
 
 df = load_csv(csv_path)
 fig = create_plotly_plot(df, variable, csv_path)
-fig 
+
+# Detect Quarto output format
+quarto_format = os.environ.get("QUARTO_FORMAT", "").lower()
+is_pdf = quarto_format in ["pdf", "latex"]
+
+if is_pdf:
+    os.makedirs(r"outputs", exist_ok=True)
+    png_path = os.path.join(r"outputs", os.path.basename(csv_path).replace(".csv", ".png"))
+    try:
+        fig.write_image(png_path, width=900, height=450, scale=2)
+        display(Image(filename=png_path))
+    except Exception as e:
+        print("Could not export figure. Make sure 'kaleido' is installed.")
+        print(e)
+else:
+    # Interactive HTML plot
+    pio.renderers.default = "notebook_connected"
+    fig.show()
 ```
 
 ## STE-07
 
-Next I will show the plots done on the measurement point STE-07.
+Plots for measurement point STE-07:
 
 ### 20260219_112332_STE-07.csv (2026-02-19)
 
@@ -432,13 +860,32 @@ Next I will show the plots done on the measurement point STE-07.
 import sys, os
 sys.path.append(os.path.abspath("src"))
 from create_plots import load_csv, create_plotly_plot
+from IPython.display import Image, display
+import plotly.io as pio
 
 csv_path = r"data/raw\20260219_112332_STE-07.csv"
 variable = "A Flow velocity [m/s]"
 
 df = load_csv(csv_path)
 fig = create_plotly_plot(df, variable, csv_path)
-fig 
+
+# Detect Quarto output format
+quarto_format = os.environ.get("QUARTO_FORMAT", "").lower()
+is_pdf = quarto_format in ["pdf", "latex"]
+
+if is_pdf:
+    os.makedirs(r"outputs", exist_ok=True)
+    png_path = os.path.join(r"outputs", os.path.basename(csv_path).replace(".csv", ".png"))
+    try:
+        fig.write_image(png_path, width=900, height=450, scale=2)
+        display(Image(filename=png_path))
+    except Exception as e:
+        print("Could not export figure. Make sure 'kaleido' is installed.")
+        print(e)
+else:
+    # Interactive HTML plot
+    pio.renderers.default = "notebook_connected"
+    fig.show()
 ```
 
 ### 20260219_144829_STE-07.csv (2026-02-19)
@@ -450,13 +897,32 @@ fig
 import sys, os
 sys.path.append(os.path.abspath("src"))
 from create_plots import load_csv, create_plotly_plot
+from IPython.display import Image, display
+import plotly.io as pio
 
 csv_path = r"data/raw\20260219_144829_STE-07.csv"
 variable = "A Flow velocity [m/s]"
 
 df = load_csv(csv_path)
 fig = create_plotly_plot(df, variable, csv_path)
-fig 
+
+# Detect Quarto output format
+quarto_format = os.environ.get("QUARTO_FORMAT", "").lower()
+is_pdf = quarto_format in ["pdf", "latex"]
+
+if is_pdf:
+    os.makedirs(r"outputs", exist_ok=True)
+    png_path = os.path.join(r"outputs", os.path.basename(csv_path).replace(".csv", ".png"))
+    try:
+        fig.write_image(png_path, width=900, height=450, scale=2)
+        display(Image(filename=png_path))
+    except Exception as e:
+        print("Could not export figure. Make sure 'kaleido' is installed.")
+        print(e)
+else:
+    # Interactive HTML plot
+    pio.renderers.default = "notebook_connected"
+    fig.show()
 ```
 
 ### 20260223_075303_STE-07.csv (2026-02-23)
@@ -468,13 +934,32 @@ fig
 import sys, os
 sys.path.append(os.path.abspath("src"))
 from create_plots import load_csv, create_plotly_plot
+from IPython.display import Image, display
+import plotly.io as pio
 
 csv_path = r"data/raw\20260223_075303_STE-07.csv"
 variable = "A Flow velocity [m/s]"
 
 df = load_csv(csv_path)
 fig = create_plotly_plot(df, variable, csv_path)
-fig 
+
+# Detect Quarto output format
+quarto_format = os.environ.get("QUARTO_FORMAT", "").lower()
+is_pdf = quarto_format in ["pdf", "latex"]
+
+if is_pdf:
+    os.makedirs(r"outputs", exist_ok=True)
+    png_path = os.path.join(r"outputs", os.path.basename(csv_path).replace(".csv", ".png"))
+    try:
+        fig.write_image(png_path, width=900, height=450, scale=2)
+        display(Image(filename=png_path))
+    except Exception as e:
+        print("Could not export figure. Make sure 'kaleido' is installed.")
+        print(e)
+else:
+    # Interactive HTML plot
+    pio.renderers.default = "notebook_connected"
+    fig.show()
 ```
 
 ### 20260224_134917_STE-07.csv (2026-02-24)
@@ -486,18 +971,37 @@ fig
 import sys, os
 sys.path.append(os.path.abspath("src"))
 from create_plots import load_csv, create_plotly_plot
+from IPython.display import Image, display
+import plotly.io as pio
 
 csv_path = r"data/raw\20260224_134917_STE-07.csv"
 variable = "A Flow velocity [m/s]"
 
 df = load_csv(csv_path)
 fig = create_plotly_plot(df, variable, csv_path)
-fig 
+
+# Detect Quarto output format
+quarto_format = os.environ.get("QUARTO_FORMAT", "").lower()
+is_pdf = quarto_format in ["pdf", "latex"]
+
+if is_pdf:
+    os.makedirs(r"outputs", exist_ok=True)
+    png_path = os.path.join(r"outputs", os.path.basename(csv_path).replace(".csv", ".png"))
+    try:
+        fig.write_image(png_path, width=900, height=450, scale=2)
+        display(Image(filename=png_path))
+    except Exception as e:
+        print("Could not export figure. Make sure 'kaleido' is installed.")
+        print(e)
+else:
+    # Interactive HTML plot
+    pio.renderers.default = "notebook_connected"
+    fig.show()
 ```
 
 ## STE-08
 
-Next I will show the plots done on the measurement point STE-08.
+Plots for measurement point STE-08:
 
 ### 20251118_024904_STE-08.csv (2025-11-18)
 
@@ -508,18 +1012,37 @@ Next I will show the plots done on the measurement point STE-08.
 import sys, os
 sys.path.append(os.path.abspath("src"))
 from create_plots import load_csv, create_plotly_plot
+from IPython.display import Image, display
+import plotly.io as pio
 
 csv_path = r"data/raw\20251118_024904_STE-08.csv"
 variable = "A Flow velocity [m/s]"
 
 df = load_csv(csv_path)
 fig = create_plotly_plot(df, variable, csv_path)
-fig 
+
+# Detect Quarto output format
+quarto_format = os.environ.get("QUARTO_FORMAT", "").lower()
+is_pdf = quarto_format in ["pdf", "latex"]
+
+if is_pdf:
+    os.makedirs(r"outputs", exist_ok=True)
+    png_path = os.path.join(r"outputs", os.path.basename(csv_path).replace(".csv", ".png"))
+    try:
+        fig.write_image(png_path, width=900, height=450, scale=2)
+        display(Image(filename=png_path))
+    except Exception as e:
+        print("Could not export figure. Make sure 'kaleido' is installed.")
+        print(e)
+else:
+    # Interactive HTML plot
+    pio.renderers.default = "notebook_connected"
+    fig.show()
 ```
 
 ## STE-10
 
-Next I will show the plots done on the measurement point STE-10.
+Plots for measurement point STE-10:
 
 ### 20251119_112337_STE-10.csv (2025-11-19)
 
@@ -530,13 +1053,32 @@ Next I will show the plots done on the measurement point STE-10.
 import sys, os
 sys.path.append(os.path.abspath("src"))
 from create_plots import load_csv, create_plotly_plot
+from IPython.display import Image, display
+import plotly.io as pio
 
 csv_path = r"data/raw\20251119_112337_STE-10.csv"
 variable = "A Flow velocity [m/s]"
 
 df = load_csv(csv_path)
 fig = create_plotly_plot(df, variable, csv_path)
-fig 
+
+# Detect Quarto output format
+quarto_format = os.environ.get("QUARTO_FORMAT", "").lower()
+is_pdf = quarto_format in ["pdf", "latex"]
+
+if is_pdf:
+    os.makedirs(r"outputs", exist_ok=True)
+    png_path = os.path.join(r"outputs", os.path.basename(csv_path).replace(".csv", ".png"))
+    try:
+        fig.write_image(png_path, width=900, height=450, scale=2)
+        display(Image(filename=png_path))
+    except Exception as e:
+        print("Could not export figure. Make sure 'kaleido' is installed.")
+        print(e)
+else:
+    # Interactive HTML plot
+    pio.renderers.default = "notebook_connected"
+    fig.show()
 ```
 
 ### 20251120_092331_STE-10.csv (2025-11-20)
@@ -548,13 +1090,32 @@ fig
 import sys, os
 sys.path.append(os.path.abspath("src"))
 from create_plots import load_csv, create_plotly_plot
+from IPython.display import Image, display
+import plotly.io as pio
 
 csv_path = r"data/raw\20251120_092331_STE-10.csv"
 variable = "A Flow velocity [m/s]"
 
 df = load_csv(csv_path)
 fig = create_plotly_plot(df, variable, csv_path)
-fig 
+
+# Detect Quarto output format
+quarto_format = os.environ.get("QUARTO_FORMAT", "").lower()
+is_pdf = quarto_format in ["pdf", "latex"]
+
+if is_pdf:
+    os.makedirs(r"outputs", exist_ok=True)
+    png_path = os.path.join(r"outputs", os.path.basename(csv_path).replace(".csv", ".png"))
+    try:
+        fig.write_image(png_path, width=900, height=450, scale=2)
+        display(Image(filename=png_path))
+    except Exception as e:
+        print("Could not export figure. Make sure 'kaleido' is installed.")
+        print(e)
+else:
+    # Interactive HTML plot
+    pio.renderers.default = "notebook_connected"
+    fig.show()
 ```
 
 ### 20251120_093239_STE-10.csv (2025-11-20)
@@ -566,18 +1127,37 @@ fig
 import sys, os
 sys.path.append(os.path.abspath("src"))
 from create_plots import load_csv, create_plotly_plot
+from IPython.display import Image, display
+import plotly.io as pio
 
 csv_path = r"data/raw\20251120_093239_STE-10.csv"
 variable = "A Flow velocity [m/s]"
 
 df = load_csv(csv_path)
 fig = create_plotly_plot(df, variable, csv_path)
-fig 
+
+# Detect Quarto output format
+quarto_format = os.environ.get("QUARTO_FORMAT", "").lower()
+is_pdf = quarto_format in ["pdf", "latex"]
+
+if is_pdf:
+    os.makedirs(r"outputs", exist_ok=True)
+    png_path = os.path.join(r"outputs", os.path.basename(csv_path).replace(".csv", ".png"))
+    try:
+        fig.write_image(png_path, width=900, height=450, scale=2)
+        display(Image(filename=png_path))
+    except Exception as e:
+        print("Could not export figure. Make sure 'kaleido' is installed.")
+        print(e)
+else:
+    # Interactive HTML plot
+    pio.renderers.default = "notebook_connected"
+    fig.show()
 ```
 
 ## STE-11
 
-Next I will show the plots done on the measurement point STE-11.
+Plots for measurement point STE-11:
 
 ### 20251121_025609_STE-11.csv (2025-11-21)
 
@@ -588,12 +1168,31 @@ Next I will show the plots done on the measurement point STE-11.
 import sys, os
 sys.path.append(os.path.abspath("src"))
 from create_plots import load_csv, create_plotly_plot
+from IPython.display import Image, display
+import plotly.io as pio
 
 csv_path = r"data/raw\20251121_025609_STE-11.csv"
 variable = "A Flow velocity [m/s]"
 
 df = load_csv(csv_path)
 fig = create_plotly_plot(df, variable, csv_path)
-fig 
+
+# Detect Quarto output format
+quarto_format = os.environ.get("QUARTO_FORMAT", "").lower()
+is_pdf = quarto_format in ["pdf", "latex"]
+
+if is_pdf:
+    os.makedirs(r"outputs", exist_ok=True)
+    png_path = os.path.join(r"outputs", os.path.basename(csv_path).replace(".csv", ".png"))
+    try:
+        fig.write_image(png_path, width=900, height=450, scale=2)
+        display(Image(filename=png_path))
+    except Exception as e:
+        print("Could not export figure. Make sure 'kaleido' is installed.")
+        print(e)
+else:
+    # Interactive HTML plot
+    pio.renderers.default = "notebook_connected"
+    fig.show()
 ```
 
