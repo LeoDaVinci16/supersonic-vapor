@@ -81,6 +81,7 @@ quarto render report_generated.qmd
     ```bash
     quarto render report_png.qmd --to pdf
     ```
+    
         - Ensures figures are fixed-size, paginated, and ready to print.
 
 ## 🧩 Customization
