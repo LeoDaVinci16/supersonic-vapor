@@ -29,3 +29,16 @@ report_vapor_files/
 
 # Other common caches
 *.ipynb_checkpoints/
+
+# Jupyter / Quarto cache
+.jupyter_cache/
+_quarto_cache/
+
+# HTML/PDF outputs
+#*.html
+*_files/
+pdf/report_generated_pdf.qmd
+
+# Python cache
+__pycache__/
+*.pyc
