@@ -82,7 +82,7 @@ quarto render report_generated.qmd
     quarto render report_png.qmd --to pdf
     ```
     
-        - Ensures figures are fixed-size, paginated, and ready to print.
+    - Ensures figures are fixed-size, paginated, and ready to print.
 
 ## 🧩 Customization
 - Variables to plot: Edit the variables_to_plot list in create_report.py
