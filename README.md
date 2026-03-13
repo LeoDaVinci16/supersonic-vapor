@@ -68,7 +68,6 @@ quarto render report_generated.qmd
 ```bash
 fig.write_image(f"outputs/{csv_file_name}.png", width=800, height=400)
 ```
-
     2. Modify `create_report_png.py` (or reuse the main script) to embed PNG images instead of interactive plots:
 ```bash
 ![](outputs/STE-01_20251204.png){ width=80% }
