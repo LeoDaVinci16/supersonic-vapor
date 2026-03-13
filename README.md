@@ -65,20 +65,24 @@ quarto render report_generated.qmd
 
 3. Generate a static, printable report
     1. Modify create_plots.py to export figures as PNG:
+
 ```bash
 fig.write_image(f"outputs/{csv_file_name}.png", width=800, height=400)
 ```
+
     2. Modify `create_report_png.py` (or reuse the main script) to embed PNG images instead of interactive plots:
+
 ```bash
 ![](outputs/STE-01_20251204.png){ width=80% }
 ```
 
     3. Render PDF from the PNG-based Quarto file:
+
 ```bash
 quarto render report_png.qmd --to pdf
 ```
     - Ensures figures are fixed-size, paginated, and ready to print.
-
+    
 ## 🧩 Customization
 - Variables to plot: Edit the variables_to_plot list in create_report.py
 - Figure size: Adjust in create_plotly_plot() or write_image()
