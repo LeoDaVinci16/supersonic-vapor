@@ -6,7 +6,7 @@ This repository contains a fully automated system to generate measurement report
 
 ## 📂 Repository Structure
 
-```vapor/
+``vapor/
 │
 ├─ data/raw/                # Raw CSV files from measurement campaigns
 ├─ src/                     # Python scripts
@@ -15,7 +15,8 @@ This repository contains a fully automated system to generate measurement report
 ├─ outputs/                 # Optional output folder for PNGs or exported figures
 ├─ report_vapor.qmd         # Main Quarto report (HTML + optional PDF)
 ├─ report_generated.qmd     # Dynamically generated QMD from Python script
-└─ README.md                # This file```
+└─ README.md                # This file
+``
 
 ## ⚡ Features
 
@@ -45,16 +46,14 @@ This repository contains a fully automated system to generate measurement report
 
 ## 🛠️ Usage
 1. Install dependencies
- ```
-pip install pandas plotly kaleido quarto
-```
+ ``pip install pandas plotly kaleido quarto``
 `kaleido` is required for exporting Plotly figures to PNG.
 
 `quarto` must be installed for rendering QMD files.
 
 2. Generate the interactive HTML report
-```python src/create_report.py
-quarto render report_generated.qmd```
+``python src/create_report.py
+quarto render report_generated.qmd``
 
 - Opens `report_generated.html` with interactive plots.
 
@@ -62,14 +61,14 @@ quarto render report_generated.qmd```
 
 3. Generate a static, printable report
     1. Modify create_plots.py to export figures as PNG:
-```fig.write_image(f"outputs/{csv_file_name}.png", width=800, height=400)```
+``fig.write_image(f"outputs/{csv_file_name}.png", width=800, height=400)``
 
     2. Modify `create_report_png.py` (or reuse the main script) to embed PNG images instead of interactive plots:
-```![](outputs/STE-01_20251204.png){ width=80% }```
+``![](outputs/STE-01_20251204.png){ width=80% }``
 
     3. Render PDF from the PNG-based Quarto file:
-```quarto render report_png.qmd --to pdf```
-    - Ensures figures are fixed-size, paginated, and ready to print.
+``quarto render report_png.qmd --to pdf``
+        - Ensures figures are fixed-size, paginated, and ready to print.
 
 ## 🧩 Customization
 - Variables to plot: Edit the variables_to_plot list in create_report.py
