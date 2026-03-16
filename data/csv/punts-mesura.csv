@@ -1,12 +1,12 @@
-x,y,id,planta-numero,id_vell,source,target,DN
-10,10,STE-1,E800,PM-V-1,caldera,E800,20
-20,20,STE-2,Secadores,PM-V-2,caldera,secadores,20
-30,30,STE-3,PEC,PM-V-3,caldera,PEC,20
-40,40,STE-4,Nautas,PM-V-4,secadores,Nautas,20
-50,50,STE-5,V800,PM-V-5,colector,V800,20
-60,60,STE-6,V700,PM-V-6,colector,V700,20
-70,70,STE-7,P400,PM-V-7,colector,P400,20
-80,80,STE-8,Atomizador 1a planta,PM-V-8,secadores,atomizador,20
-90,90,STE-9,Atomizador 2a planta,PM-V-9,secadores,atomizador,20
-100,100,STE-10,S600,PM-V-10,secadores,S600,20
-110,110,STE-11,S6000,PM-V-11,secadores,S6000,20
+x,y,id,planta-numero,id_vell,source,target,DN,OD,WT,area
+1514,854,STE-1,E800,PM-V-1,caldera,E800,,88.9,,0.006207166618944348
+1104,556,STE-2,Secadores,PM-V-2,caldera,secadores,80.0,88.9,3.3,0.005319729526158304
+1154,514,STE-3,PEC,PM-V-3,caldera,PEC,125.0,141.0,3.3,0.014186929768786934
+1143,323,STE-4,Nautas,PM-V-4,secadores,Nautas,65.0,76.0,,0.004536459791783661
+843,908,STE-5,V800,PM-V-5,colector,V800,50.0,60.3,,0.0028557784079478277
+903,908,STE-6,V700,PM-V-6,colector,V700,50.0,78.0,,0.004778362426110076
+940,908,STE-7,P400,PM-V-7,colector,P400,100.0,114.0,,0.010207034531513238
+589,509,STE-8,Atomizador 1a planta,PM-V-8,secadores,atomizador,50.0,60.3,2.7,0.0023671979184615426
+745,514,STE-9,Atomizador 2a planta,PM-V-9,secadores,atomizador,40.0,48.3,2.5,0.0014725351625722418
+352,749,STE-10,S600,PM-V-10,secadores,S600,65.0,73.0,2.7,0.0035890811111671224
+265,1333,STE-11,S6000,PM-V-11,secadores,S6000,65.0,76.4,3.1,0.0038704735651491607
