@@ -1,11 +1,22 @@
+# Quarto caches
 *.quarto_ipynb*
 _quarto_cache/
+_quarto_cache_html/
 
 # Quarto / Jupyter generated files
 report_generated.quarto_ipynb_*
 report_generated_files/
 report_vapor.quarto_ipynb_*
 report_vapor_files/
+
+
+# Quarto-generated HTML
+*_files/
+*.html
+
+# Python bytecode
+__pycache__/
+*.pyc
 
 # LaTeX generated files
 *.aux
