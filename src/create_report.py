@@ -4,6 +4,8 @@ import os
 import re
 from collections import defaultdict
 import plotly.io as pio
+from points_dict import main
+
 
 # Configuration
 csv_folder = "data/raw"
