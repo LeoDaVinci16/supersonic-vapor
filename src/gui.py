@@ -4,6 +4,8 @@ import os
 import subprocess
 from pathlib import Path
 import sys
+import os
+import pandas as pd
 
 # -----------------------------
 # Paths & defaults
@@ -26,7 +28,7 @@ class SXS_GUI(tk.Tk):
     def __init__(self):
         super().__init__()
         self.title("Supersonic Tools")
-        self.geometry("500x600")
+        self.geometry("500x730")
         self.resizable(False, False)
         self.configure(bg="#F5F5F5")
         self.create_widgets()
@@ -43,7 +45,8 @@ class SXS_GUI(tk.Tk):
 
         btn_style = {"width": 25, "height": 2, "bg": "#4CAF50", "fg": "white", "font": ("Inter", 11, "bold")}
 
-        tk.Button(tasks_frame, text="Plots", command=self.run_plots, **btn_style).pack(pady=5)
+        tk.Button(tasks_frame, text="Batch plot", command=self.run_batch_plots, **btn_style).pack(pady=5)
+        tk.Button(tasks_frame, text="Preview plot", command=self.run_prev_plots, **btn_style).pack(pady=5)
         tk.Button(tasks_frame, text="Euromed Map", command=self.run_map, **btn_style).pack(pady=5)
         tk.Button(tasks_frame, text="Sankey Diagram", command=self.run_sankey, **btn_style).pack(pady=5)
 
@@ -80,12 +83,41 @@ class SXS_GUI(tk.Tk):
     def ask_magnitude_column(self, columns, default="DN"):
         top = tk.Toplevel(self)
         top.title("Select Magnitude Column")
-        top.geometry("300x200")
+        top.geometry("300x500")
+
         tk.Label(top, text="Select magnitude column:", font=("Inter", 12)).pack(pady=5)
 
+        # --- Canvas + Scrollbar ---
+        container = tk.Frame(top)
+        container.pack(fill="both", expand=True)
+
+        canvas = tk.Canvas(container)
+        scrollbar = tk.Scrollbar(container, orient="vertical", command=canvas.yview)
+
+        scroll_frame = tk.Frame(canvas)
+
+        scroll_frame.bind(
+            "<Configure>",
+            lambda e: canvas.configure(scrollregion=canvas.bbox("all"))
+        )
+
+        canvas.create_window((0, 0), window=scroll_frame, anchor="nw")
+        canvas.configure(yscrollcommand=scrollbar.set)
+
+        canvas.pack(side="left", fill="both", expand=True)
+        scrollbar.pack(side="right", fill="y")
+
+        # --- Radio buttons ---
         col_var = tk.StringVar(value=default)
+
         for col in columns:
-            tk.Radiobutton(top, text=col, variable=col_var, value=col, font=("Inter", 11)).pack(anchor="w", padx=20)
+            tk.Radiobutton(
+                scroll_frame,
+                text=col,
+                variable=col_var,
+                value=col,
+                font=("Inter", 11)
+            ).pack(anchor="w", padx=10)
 
         result = {}
 
@@ -93,9 +125,13 @@ class SXS_GUI(tk.Tk):
             result["column"] = col_var.get()
             top.destroy()
 
-        tk.Button(top, text="OK", command=submit, font=("Inter", 11, "bold"), bg="#4CAF50", fg="white").pack(pady=10)
+        tk.Button(top, text="OK", command=submit,
+                font=("Inter", 11, "bold"),
+                bg="#4CAF50", fg="white").pack(pady=10)
+
         top.grab_set()
         top.wait_window()
+
         return result.get("column", default)
 
     def run_script(self, script_name, args=None):
@@ -144,7 +180,26 @@ class SXS_GUI(tk.Tk):
         except Exception as e:
             messagebox.showerror("Processing Error", f"Failed in main_file:\n{e}")
 
-    def run_plots(self):
+    def run_batch_plots(self):
+        script_dir = os.path.dirname(os.path.abspath(__file__))
+        plot_folder = os.path.abspath(os.path.join(script_dir, "..", "outputs", "plots"))
+        import create_plots
+        folder_path = filedialog.askdirectory(initialdir=DEFAULT_PLOT_FOLDER)
+        if not folder_path:
+            folder_path = DEFAULT_PLOT_FOLDER
+        # Get a sample CSV to extract columns
+        csv_files = [f for f in os.listdir(folder_path) if f.lower().endswith(".csv")]
+        if not csv_files:
+            messagebox.showerror("Error", "No CSV files found")
+            return
+        sample_df = pd.read_csv(os.path.join(folder_path, csv_files[0]), sep="\t")
+        # Ask user which variable(s)
+        magnitude_col = self.ask_magnitude_column(sample_df.columns, default="cabal")
+        # Call function directly (no subprocess)
+        create_plots.batch_plot(folder_path, plot_folder, [magnitude_col])
+
+    def run_prev_plots(self):
+        import create_plots
         folder_path = filedialog.askdirectory(initialdir=DEFAULT_PLOT_FOLDER)
         if not folder_path:
             folder_path = DEFAULT_PLOT_FOLDER

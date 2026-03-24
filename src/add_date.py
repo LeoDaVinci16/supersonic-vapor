@@ -49,7 +49,7 @@ def extract_datetime(df, date_col):
 def extract_point_id(filename):
     """Extract the point ID from the filename using regex or fallback to basename."""
     match = re.search(r"STE-(.+)\.csv", filename)
-    return match.group(1) if match else filename.rsplit(".csv", 1)[0]
+    return f"STE-{match.group(1)}" if match else filename.rsplit(".csv", 1)[0]
 
 def build_new_filename(date_str, time_str, point_id):
     """Build new filename in the format: YYYYMMDD_HHMMSS_pointID.csv"""
