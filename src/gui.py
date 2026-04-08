@@ -11,8 +11,8 @@ import pandas as pd
 # Paths & defaults
 # -----------------------------
 ROOT_FOLDER = Path(__file__).parents[1]
-DOCS_FOLDER = os.path.join(ROOT_FOLDER, "docs")
-CSV_FOLDER = os.path.join(ROOT_FOLDER, "data", "csv")
+DOCS_FOLDER = os.path.join(ROOT_FOLDER, "data", "docs")
+CSV_FOLDER = os.path.join(ROOT_FOLDER, "data", "docs_csv")
 DATA_FOLDER = os.path.join(ROOT_FOLDER, "data", "raw")
 
 DEFAULT_MAP_IMG = "planol.png"
