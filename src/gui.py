@@ -1,5 +1,5 @@
 import tkinter as tk
-from tkinter import filedialog, messagebox, ttk
+from tkinter import filedialog, messagebox, ttk, simpledialog
 import os
 import subprocess
 from pathlib import Path
@@ -156,13 +156,11 @@ class SXS_GUI(tk.Tk):
         excel_file = self.ask_file(DEFAULT_MAP_EXCEL, [("CSV or Excel", "*.csv *.xlsx *.xls")])
         if not excel_file:
             return
-
         try:
             import create_map
         except Exception as e:
             messagebox.showerror("Import Error", f"Failed to import create_map:\n{e}")
             return
-
         try:
             if excel_file.lower().endswith(".csv"):
                 import pandas as pd
@@ -172,9 +170,7 @@ class SXS_GUI(tk.Tk):
         except Exception as e:
             messagebox.showerror("Load Error", f"Failed to load data:\n{e}")
             return
-
         magnitude_col = self.ask_magnitude_column(df.columns, default="DN")
-
         try:
             create_map.main_file(excel_file, magnitude_col)
         except Exception as e:
@@ -203,7 +199,18 @@ class SXS_GUI(tk.Tk):
         folder_path = filedialog.askdirectory(initialdir=DEFAULT_PLOT_FOLDER)
         if not folder_path:
             folder_path = DEFAULT_PLOT_FOLDER
-        self.run_script("create_plots.py", [folder_path])
+        csv_files = [f for f in os.listdir(folder_path) if f.lower().endswith(".csv")]
+        if not csv_files:
+            messagebox.showerror("Error", "No s'han trobat els arxius CSV")
+            return
+        csv_path = filedialog.askopenfilename(initialdir=folder_path, title="tria l'arxiu CSV", filetypes=[("arxius CSV", "*.csv")])
+        if not csv_path or not csv_path.lower().endswith(".csv"):
+            messagebox.showerror("Error", "Arxiu seleccionat invalid")
+            return
+        df = create_plots.load_csv(csv_path)
+        sample_df = pd.read_csv(os.path.join(folder_path, csv_files[0]), sep="\t")
+        magnitude_col = self.ask_magnitude_column(sample_df.columns, default="cabal")
+        create_plots.preview_plot(csv_path, variables=[magnitude_col], plot_folder=DEFAULT_PLOT_FOLDER, gui=True)
 
     def run_sankey(self):
         sankey_file = self.ask_file(DEFAULT_SANKEY_FILE, [("CSV/Excel", "*.csv *.xlsx *.xls")])

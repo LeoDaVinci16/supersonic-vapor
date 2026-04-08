@@ -126,7 +126,7 @@ def batch_plot(folder_path, plot_folder, variables_to_plot):
             print(f"✅ Saved: {path}")
     print("\n🎉 Batch plotting finished!")
 
-def preview_plot(folder_path, plot_folder):
+""" def preview_plot(folder_path, plot_folder):
     csv_files = [f for f in os.listdir(folder_path) if f.lower().endswith(".csv")]
     for i, f in enumerate(csv_files):
         print(f"{i}: {f}")
@@ -137,14 +137,67 @@ def preview_plot(folder_path, plot_folder):
     for i, col in enumerate(numeric_cols):
         print(f"{i}: {col}")
     var_number = int(input("\nEnter variable number: "))
-    variable = numeric_cols[var_number]
+    variable = numeric_cols[var_number] 
     df[variable] = pd.to_numeric(df[variable], errors="coerce").abs()
     fig, ax = create_plot(df, variable, csv_path)
     plt.show()
     save = input("Save plot? (y/n): ").lower()
     if save == "y":
         path = save_plot(fig, plot_folder, csv_path, variable)
-        print(f"✅ Plot saved: {path}")
+        print(f"✅ Plot saved: {path}") """
+
+def preview_plot(csv_path, variables=None, plot_folder=None, gui=False):
+    """
+    Preview a single plot from a CSV.
+    - csv_path: full path to CSV file
+    - variables: list of variables to plot
+    - plot_folder: folder to save plots
+    - gui: if True, use GUI dialogs; if False, use CLI prompts
+    """
+
+    df = load_csv(csv_path)
+
+    # Determine variable
+    if variables is None:
+        if gui:
+            # GUI mode
+            from tkinter import simpledialog, messagebox
+            numeric_cols = get_numeric_columns(df)
+            variable = simpledialog.askstring(
+                "Select Variable",
+                "Choose variable to plot:\n" + "\n".join(numeric_cols)
+            )
+            if variable not in numeric_cols:
+                messagebox.showerror("Error", "Invalid variable selected")
+                return
+        else:
+            # CLI mode
+            numeric_cols = get_numeric_columns(df)
+            for i, col in enumerate(numeric_cols):
+                print(f"{i}: {col}")
+            var_number = int(input("\nEnter variable number: "))
+            variable = numeric_cols[var_number]
+    else:
+        variable = variables[0]
+
+    df[variable] = pd.to_numeric(df[variable], errors="coerce").abs()
+
+    # Create and show plot
+    fig, ax = create_plot(df, variable, csv_path)
+    plt.show()
+
+    # Handle saving
+    if plot_folder is not None:
+        if gui:
+            from tkinter import messagebox
+            if messagebox.askyesno("Anomena i desa", "Vols guardar aquest gràfic?"):
+                path = save_plot(fig, plot_folder, csv_path, variable)
+                messagebox.showinfo("Desat", f"✅ Gràfic guardat a: {path}")
+        else:
+            save = input("Save plot? (y/n): ").lower()
+            if save == "y":
+                path = save_plot(fig, plot_folder, csv_path, variable)
+                print(f"✅ Plot saved: {path}")
 
 def main():
     script_dir = os.path.dirname(os.path.abspath(__file__))

@@ -8,8 +8,8 @@ import pandas as pd
 # 0️⃣ CONFIG
 # ==============================
 ROOT_FOLDER = Path(__file__).parents[1]
-DOCS_FOLDER = os.path.join(ROOT_FOLDER, "docs")
-CSV_FOLDER = os.path.join(ROOT_FOLDER, "data", "csv")  # CSVs updated here
+DOCS_FOLDER = os.path.join(ROOT_FOLDER, "data", "docs")
+CSV_FOLDER = os.path.join(ROOT_FOLDER, "data", "docs_csv")  # CSVs updated here
 
 # Make sure CSV_FOLDER exists
 os.makedirs(CSV_FOLDER, exist_ok=True)

@@ -9,7 +9,10 @@ This repository contains a fully automated system to generate measurement report
 ```Bash
 vapor/
 │
-├─ data/raw/                # Raw CSV files from measurement campaigns
+├─ data                     # 
+│  ├─ docs_csv              # Excel editable files in csv format
+│  ├─ docs                  # Excel editable files  
+│  └─ raw                   # Raw CSV files from measurement campaigns
 ├─ src/                     # Python scripts
 │  ├─ create_plots.py       # Functions to load CSVs and generate interactive/static plots
 │  └─ create_report.py      # Script to generate Quarto files dynamically from CSVs
