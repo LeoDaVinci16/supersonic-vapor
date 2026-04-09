@@ -2,190 +2,222 @@
 title: "Informe dels cabals (PDF)"
 author: Arnau Coronado Nadal
 execute:
-  cache: true
-  cache-dir: _quarto_cache_pdf
+  cache: false
 format:
   pdf:
     toc: true
+    documentclass: article
+    geometry: margin=1.5cm
+    header-includes: |
+      \usepackage{caption}
+      \captionsetup[figure]{skip=5pt}
+      \usepackage{parskip}
+      \setlength{\parskip}{0.2em}
 ---
+\newpage
+
 
 ## Punt de mesura STE-01
 
 Gràfiques de les mesures fetes en el punt STE-01:
 
-### 20251204_141433_STE-01.csv (2025-12-04)
+### 20251204_141433_STE-01.csv
 
-![](outputs/plots/20251204_141433_STE-01.csv_A_Flow_velocity_m-s.png){ width=80% }
+![A Flow velocity [m/s]](outputs/plots\20251204_141433_STE-01_A_Flow_velocity_ms.png)
 
-### 20251205_044520_STE-01.csv (2025-12-05)
+### 20251205_044520_STE-01.csv
 
-![](outputs/plots/20251205_044520_STE-01.csv_A_Flow_velocity_m-s.png){ width=80% }
+![A Flow velocity [m/s]](outputs/plots\20251205_044520_STE-01_A_Flow_velocity_ms.png)
+
+\newpage
+
 
 ## Punt de mesura STE-02
 
 Gràfiques de les mesures fetes en el punt STE-02:
 
-### 20251104_103620_STE-02.csv (2025-11-04)
+### 20251104_103620_STE-02.csv
 
-![](outputs/plots/20251104_103620_STE-02.csv_A_Flow_velocity_m-s.png){ width=80% }
+![A Flow velocity [m/s]](outputs/plots\20251104_103620_STE-02_A_Flow_velocity_ms.png)
 
-### 20251114_112101_STE-02.csv (2025-11-14)
+### 20251114_112101_STE-02.csv
 
-![](outputs/plots/20251114_112101_STE-02.csv_A_Flow_velocity_m-s.png){ width=80% }
+![A Flow velocity [m/s]](outputs/plots\20251114_112101_STE-02_A_Flow_velocity_ms.png)
 
-### 20251117_092425_STE-02.csv (2025-11-17)
+### 20251117_092425_STE-02.csv
 
-![](outputs/plots/20251117_092425_STE-02.csv_A_Flow_velocity_m-s.png){ width=80% }
+![A Flow velocity [m/s]](outputs/plots\20251117_092425_STE-02_A_Flow_velocity_ms.png)
+
+\newpage
+
 
 ## Punt de mesura STE-03
 
 Gràfiques de les mesures fetes en el punt STE-03:
 
-### 20251027_143957_STE-03.csv (2025-10-27)
+### 20251027_143957_STE-03.csv
 
-![](outputs/plots/20251027_143957_STE-03.csv_A_Flow_velocity_m-s.png){ width=80% }
+![A Flow velocity [m/s]](outputs/plots\20251027_143957_STE-03_A_Flow_velocity_ms.png)
 
-### 20251028_110853_STE-03.csv (2025-10-28)
+### 20251028_110853_STE-03.csv
 
-![](outputs/plots/20251028_110853_STE-03.csv_A_Flow_velocity_m-s.png){ width=80% }
+![A Flow velocity [m/s]](outputs/plots\20251028_110853_STE-03_A_Flow_velocity_ms.png)
 
-### 20251103_125239_STE-03.csv (2025-11-03)
+### 20251103_125239_STE-03.csv
 
-![](outputs/plots/20251103_125239_STE-03.csv_A_Flow_velocity_m-s.png){ width=80% }
+![A Flow velocity [m/s]](outputs/plots\20251103_125239_STE-03_A_Flow_velocity_ms.png)
 
-### 20251110_095343_STE-03.csv (2025-11-10)
+### 20251110_095343_STE-03.csv
 
-![](outputs/plots/20251110_095343_STE-03.csv_A_Flow_velocity_m-s.png){ width=80% }
+![A Flow velocity [m/s]](outputs/plots\20251110_095343_STE-03_A_Flow_velocity_ms.png)
 
-### 20251111_110949_STE-03.csv (2025-11-11)
+### 20251111_110949_STE-03.csv
 
-![](outputs/plots/20251111_110949_STE-03.csv_A_Flow_velocity_m-s.png){ width=80% }
+![A Flow velocity [m/s]](outputs/plots\20251111_110949_STE-03_A_Flow_velocity_ms.png)
 
-### 20251112_114717_STE-03.csv (2025-11-12)
+### 20251112_114717_STE-03.csv
 
-![](outputs/plots/20251112_114717_STE-03.csv_A_Flow_velocity_m-s.png){ width=80% }
+![A Flow velocity [m/s]](outputs/plots\20251112_114717_STE-03_A_Flow_velocity_ms.png)
 
-### 20251112_122634_STE-03.csv (2025-11-12)
+### 20251112_122634_STE-03.csv
 
-![](outputs/plots/20251112_122634_STE-03.csv_A_Flow_velocity_m-s.png){ width=80% }
+![A Flow velocity [m/s]](outputs/plots\20251112_122634_STE-03_A_Flow_velocity_ms.png)
 
-### 20251122_003137_STE-03.csv (2025-11-22)
+### 20251122_003137_STE-03.csv
 
-![](outputs/plots/20251122_003137_STE-03.csv_A_Flow_velocity_m-s.png){ width=80% }
+![A Flow velocity [m/s]](outputs/plots\20251122_003137_STE-03_A_Flow_velocity_ms.png)
 
-### 20251126_141746_STE-03.csv (2025-11-26)
+### 20251126_141746_STE-03.csv
 
-![](outputs/plots/20251126_141746_STE-03.csv_A_Flow_velocity_m-s.png){ width=80% }
+![A Flow velocity [m/s]](outputs/plots\20251126_141746_STE-03_A_Flow_velocity_ms.png)
 
-### 20251127_132919_STE-03.csv (2025-11-27)
+### 20251127_132919_STE-03.csv
 
-![](outputs/plots/20251127_132919_STE-03.csv_A_Flow_velocity_m-s.png){ width=80% }
+![A Flow velocity [m/s]](outputs/plots\20251127_132919_STE-03_A_Flow_velocity_ms.png)
 
-### 20251127_133004_STE-03.csv (2025-11-27)
+### 20251127_133004_STE-03.csv
 
-![](outputs/plots/20251127_133004_STE-03.csv_A_Flow_velocity_m-s.png){ width=80% }
+![A Flow velocity [m/s]](outputs/plots\20251127_133004_STE-03_A_Flow_velocity_ms.png)
 
-### 20251201_155248_STE-03.csv (2025-12-01)
+### 20251201_155248_STE-03.csv
 
-![](outputs/plots/20251201_155248_STE-03.csv_A_Flow_velocity_m-s.png){ width=80% }
+![A Flow velocity [m/s]](outputs/plots\20251201_155248_STE-03_A_Flow_velocity_ms.png)
 
-### 20260205_131455_STE-03.csv (2026-02-05)
+### 20260205_131455_STE-03.csv
 
-![](outputs/plots/20260205_131455_STE-03.csv_A_Flow_velocity_m-s.png){ width=80% }
+![A Flow velocity [m/s]](outputs/plots\20260205_131455_STE-03_A_Flow_velocity_ms.png)
+
+\newpage
+
 
 ## Punt de mesura STE-04
 
 Gràfiques de les mesures fetes en el punt STE-04:
 
-### 20251007_100341_STE-04.csv (2025-10-07)
+### 20251007_100341_STE-04.csv
 
-![](outputs/plots/20251007_100341_STE-04.csv_A_Flow_velocity_m-s.png){ width=80% }
+![A Flow velocity [m/s]](outputs/plots\20251007_100341_STE-04_A_Flow_velocity_ms.png)
 
-### 20251008_095114_STE-04.csv (2025-10-08)
+### 20251008_095114_STE-04.csv
 
-![](outputs/plots/20251008_095114_STE-04.csv_A_Flow_velocity_m-s.png){ width=80% }
+![A Flow velocity [m/s]](outputs/plots\20251008_095114_STE-04_A_Flow_velocity_ms.png)
 
-### 20251008_115126_STE-04.csv (2025-10-08)
+### 20251008_115126_STE-04.csv
 
-![](outputs/plots/20251008_115126_STE-04.csv_A_Flow_velocity_m-s.png){ width=80% }
+![A Flow velocity [m/s]](outputs/plots\20251008_115126_STE-04_A_Flow_velocity_ms.png)
 
-### 20251112_130310_STE-04.csv (2025-11-12)
+### 20251112_130310_STE-04.csv
 
-![](outputs/plots/20251112_130310_STE-04.csv_A_Flow_velocity_m-s.png){ width=80% }
+![A Flow velocity [m/s]](outputs/plots\20251112_130310_STE-04_A_Flow_velocity_ms.png)
+
+\newpage
+
 
 ## Punt de mesura STE-05
 
 Gràfiques de les mesures fetes en el punt STE-05:
 
-### 20260316_085832_STE-05.csv (2026-03-16)
+### 20260316_085832_STE-05.csv
 
-![](outputs/plots/20260316_085832_STE-05.csv_A_Flow_velocity_m-s.png){ width=80% }
+![A Flow velocity [m/s]](outputs/plots\20260316_085832_STE-05_A_Flow_velocity_ms.png)
 
-### 20260316_134917_STE-05.csv (2026-03-16)
+### 20260316_134917_STE-05.csv
 
-![](outputs/plots/20260316_134917_STE-05.csv_A_Flow_velocity_m-s.png){ width=80% }
+![A Flow velocity [m/s]](outputs/plots\20260316_134917_STE-05_A_Flow_velocity_ms.png)
+
+\newpage
+
 
 ## Punt de mesura STE-07
 
 Gràfiques de les mesures fetes en el punt STE-07:
 
-### 20260219_112332_STE-07.csv (2026-02-19)
+### 20260219_112332_STE-07.csv
 
-![](outputs/plots/20260219_112332_STE-07.csv_A_Flow_velocity_m-s.png){ width=80% }
+![A Flow velocity [m/s]](outputs/plots\20260219_112332_STE-07_A_Flow_velocity_ms.png)
 
-### 20260219_144829_STE-07.csv (2026-02-19)
+### 20260219_144829_STE-07.csv
 
-![](outputs/plots/20260219_144829_STE-07.csv_A_Flow_velocity_m-s.png){ width=80% }
+![A Flow velocity [m/s]](outputs/plots\20260219_144829_STE-07_A_Flow_velocity_ms.png)
 
-### 20260223_075303_STE-07.csv (2026-02-23)
+### 20260223_075303_STE-07.csv
 
-![](outputs/plots/20260223_075303_STE-07.csv_A_Flow_velocity_m-s.png){ width=80% }
+![A Flow velocity [m/s]](outputs/plots\20260223_075303_STE-07_A_Flow_velocity_ms.png)
 
-### 20260224_134917_STE-07.csv (2026-02-24)
+### 20260224_134917_STE-07.csv
 
-![](outputs/plots/20260224_134917_STE-07.csv_A_Flow_velocity_m-s.png){ width=80% }
+![A Flow velocity [m/s]](outputs/plots\20260224_134917_STE-07_A_Flow_velocity_ms.png)
 
-### 20260225_140608_STE-07.csv (2026-02-25)
+### 20260225_140608_STE-07.csv
 
-![](outputs/plots/20260225_140608_STE-07.csv_A_Flow_velocity_m-s.png){ width=80% }
+![A Flow velocity [m/s]](outputs/plots\20260225_140608_STE-07_A_Flow_velocity_ms.png)
+
+\newpage
+
 
 ## Punt de mesura STE-08
 
 Gràfiques de les mesures fetes en el punt STE-08:
 
-### 20251118_024904_STE-08.csv (2025-11-18)
+### 20251118_024904_STE-08.csv
 
-![](outputs/plots/20251118_024904_STE-08.csv_A_Flow_velocity_m-s.png){ width=80% }
+![A Flow velocity [m/s]](outputs/plots\20251118_024904_STE-08_A_Flow_velocity_ms.png)
 
-### 20260309_103006_STE-08.csv (2026-03-09)
+### 20260309_103006_STE-08.csv
 
-![](outputs/plots/20260309_103006_STE-08.csv_A_Flow_velocity_m-s.png){ width=80% }
+![A Flow velocity [m/s]](outputs/plots\20260309_103006_STE-08_A_Flow_velocity_ms.png)
 
-### 20260309_133323_STE-08.csv (2026-03-09)
+### 20260309_133323_STE-08.csv
 
-![](outputs/plots/20260309_133323_STE-08.csv_A_Flow_velocity_m-s.png){ width=80% }
+![A Flow velocity [m/s]](outputs/plots\20260309_133323_STE-08_A_Flow_velocity_ms.png)
+
+\newpage
+
 
 ## Punt de mesura STE-10
 
 Gràfiques de les mesures fetes en el punt STE-10:
 
-### 20251119_112337_STE-10.csv (2025-11-19)
+### 20251119_112337_STE-10.csv
 
-![](outputs/plots/20251119_112337_STE-10.csv_A_Flow_velocity_m-s.png){ width=80% }
+![A Flow velocity [m/s]](outputs/plots\20251119_112337_STE-10_A_Flow_velocity_ms.png)
 
-### 20251120_092331_STE-10.csv (2025-11-20)
+### 20251120_092331_STE-10.csv
 
-![](outputs/plots/20251120_092331_STE-10.csv_A_Flow_velocity_m-s.png){ width=80% }
+![A Flow velocity [m/s]](outputs/plots\20251120_092331_STE-10_A_Flow_velocity_ms.png)
 
-### 20251120_093239_STE-10.csv (2025-11-20)
+### 20251120_093239_STE-10.csv
 
-![](outputs/plots/20251120_093239_STE-10.csv_A_Flow_velocity_m-s.png){ width=80% }
+![A Flow velocity [m/s]](outputs/plots\20251120_093239_STE-10_A_Flow_velocity_ms.png)
+
+\newpage
+
 
 ## Punt de mesura STE-11
 
 Gràfiques de les mesures fetes en el punt STE-11:
 
-### 20251121_025609_STE-11.csv (2025-11-21)
+### 20251121_025609_STE-11.csv
 
-![](outputs/plots/20251121_025609_STE-11.csv_A_Flow_velocity_m-s.png){ width=80% }
+![A Flow velocity [m/s]](outputs/plots\20251121_025609_STE-11_A_Flow_velocity_ms.png)
 

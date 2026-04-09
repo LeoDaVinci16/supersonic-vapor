@@ -102,7 +102,7 @@ def save_plot(fig, plot_folder, csv_file, variable):
     plt.close(fig)  # Free memory
     return plot_path
 
-def batch_plot(folder_path, plot_folder, variables_to_plot):
+""" def batch_plot(folder_path, plot_folder, variables_to_plot):
     os.makedirs(plot_folder, exist_ok=True)
     csv_files = [f for f in os.listdir(folder_path) if f.lower().endswith(".csv")]
     print(f"Found {len(csv_files)} CSV files.")
@@ -124,6 +124,52 @@ def batch_plot(folder_path, plot_folder, variables_to_plot):
             path = save_plot(fig, plot_folder, csv_path, variable)
             plt.close(fig)
             print(f"✅ Saved: {path}")
+    print("\n🎉 Batch plotting finished!") """
+
+def batch_plot(folder_path, plot_folder, variables_to_plot):
+    os.makedirs(plot_folder, exist_ok=True)
+    csv_files = [f for f in os.listdir(folder_path) if f.lower().endswith(".csv")]
+    print(f"Found {len(csv_files)} CSV files.")
+    
+    for csv_file in csv_files:
+        csv_path = os.path.join(folder_path, csv_file)
+        print(f"\n📂 Processing: {csv_file}")
+        df = load_csv(csv_path)
+        if df is None:
+            continue
+
+        numeric_cols = get_numeric_columns(df)
+        if not numeric_cols:
+            print("⚠️ No numeric columns. Skipping.")
+            continue
+
+        for variable in numeric_cols:
+            if variable not in variables_to_plot:
+                continue
+
+            # Generate the filename as save_plot would do
+            csv_name_only = os.path.splitext(os.path.basename(csv_file))[0]
+            variable_clean = re.sub(r"[^\w\-_\. ]", "", variable).replace(" ", "_")
+            plot_name = f"{csv_name_only}_{variable_clean}.png"
+            plot_path = os.path.join(plot_folder, plot_name)
+
+            if os.path.exists(plot_path):
+                print(f"✅ Plot already exists, skipping: {plot_name}")
+                continue
+
+            # Convert to numeric and drop NaNs
+            df[variable] = pd.to_numeric(df[variable], errors="coerce").abs()
+            df_clean = df.dropna(subset=[variable])
+
+            if df_clean.empty:
+                print(f"⚠️ No valid data for {variable}. Skipping.")
+                continue
+
+            # Create and save the plot
+            fig, ax = create_plot(df_clean, variable, csv_path)
+            save_plot(fig, plot_folder, csv_path, variable)
+            print(f"✅ Saved: {plot_name}")
+
     print("\n🎉 Batch plotting finished!")
 
 """ def preview_plot(folder_path, plot_folder):
