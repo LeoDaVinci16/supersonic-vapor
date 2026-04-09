@@ -14,8 +14,15 @@ vapor/
 │  ├─ docs                  # Excel editable files  
 │  └─ raw                   # Raw CSV files from measurement campaigns
 ├─ src/                     # Python scripts
+│  ├─ add_date.py           # Functions to add dates to raw filenames
+│  ├─ create_map.py         # Functions to create the euromed map
 │  ├─ create_plots.py       # Functions to load CSVs and generate interactive/static plots
-│  └─ create_report.py      # Script to generate Quarto files dynamically from CSVs
+│  ├─ create_report.py      # Functions to create the report
+│  ├─ create_sankey.py      # Functions to create the sankey diagram
+│  ├─ create_tkinter.py     # Functions to create the euromed map (updated version)
+│  ├─ excel2csv.py          # Functions to load CSVs and generate interactive/static plots
+│  ├─ gui.py                # code that creates the gui that uses all the functions
+│  └─ points_dict.py        # dictionary with the names of the points and its id
 ├─ outputs/                 # Optional output folder for PNGs or exported figures
 ├─ report_vapor.qmd         # Main Quarto report (HTML + optional PDF)
 ├─ report_generated.qmd     # Dynamically generated QMD from Python script
