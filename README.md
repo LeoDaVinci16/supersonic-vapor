@@ -2,62 +2,68 @@
 
 ## Automated Steam Measurement Report
 
-This repository contains a fully automated system to generate measurement reports for Euromed’s steam pipes. The workflow uses Python to process CSV data, Plotly for interactive plotting, and Quarto for report generation. The system supports both interactive HTML reports for analysis and static PDF-ready reports for printing.
+Aquest repositori conté un sistema completament automatitzat per generar informes de mesura per a les canonades de vapor d’Euromed. El flux de treball utilitza Python per processar dades CSV, Plotly per a gràfics interactius i Quarto per a la generació d’informes. El sistema admet tant informes HTML interactius per a l’anàlisi com informes estàtics preparats per a PDF per a la impressió.
 
-## 📂 Repository Structure
+## 📂 Estructura del repositori
 
 ```Bash
 vapor/
 │
 ├─ data                     # 
-│  ├─ docs_csv              # Excel editable files in csv format
-│  ├─ docs                  # Excel editable files  
-│  └─ raw                   # Raw CSV files from measurement campaigns
-├─ src/                     # Python scripts
-│  ├─ add_date.py           # Functions to add dates to raw filenames
-│  ├─ create_map.py         # Functions to create the euromed map
-│  ├─ create_plots.py       # Functions to load CSVs and generate interactive/static plots
-│  ├─ create_report_html.py      # Functions to create the report in html format
-│  ├─ create_report_pdf.py      # Functions to create the report in pdf format
-│  ├─ create_sankey.py      # Functions to create the sankey diagram
-│  ├─ create_tkinter.py     # Functions to create the euromed map (updated version)
-│  ├─ excel2csv.py          # Functions to load CSVs and generate interactive/static plots
-│  ├─ gui.py                # code that creates the gui that uses all the functions
-│  └─ points_dict.py        # dictionary with the names of the points and its id
-├─ outputs/                 # Optional output folder for PNGs or exported figures
-├─ report_vapor.qmd         # Main Quarto report (HTML + optional PDF)
-├─ report_generated.qmd     # Dynamically generated QMD from Python script
-└─ README.md                # This file
+│  ├─ docs_csv              # Fitxers editables en Excel en format CSV
+│  ├─ docs                  # Fitxers editables en Excel  
+│  └─ raw                   # Fitxers CSV en brut de campanyes de mesura
+├─ src/                     # Scripts de Python
+│  ├─ add_date.py           # Funcions per afegir dates als noms dels fitxers en brut
+│  ├─ create_map.py         # Funcions per crear el mapa d’Euromed
+│  ├─ create_plots.py       # Funcions per carregar CSVs i generar gràfics interactius/estàtics
+│  ├─ create_report_html.py # Funcions per crear l’informe en format HTML
+│  ├─ create_report_pdf.py  # Funcions per crear l’informe en format PDF
+│  ├─ create_sankey.py      # Funcions per crear el diagrama de Sankey
+│  ├─ create_tkinter.py     # Funcions per crear el mapa d’Euromed (versió actualitzada)
+│  ├─ excel2csv.py          # Funcions per carregar CSVs i generar gràfics interactius/estàtics
+│  ├─ gui.py                # Codi que crea la interfície gràfica (GUI) que utilitza totes les funcions
+│  └─ points_dict.py        # Diccionari amb els noms dels punts i el seu identificador
+├─ outputs/                 # Carpeta opcional per a PNGs o figures exportades
+├─ report_vapor.qmd         # Informe principal de Quarto (HTML + PDF opcional)
+├─ report_generated.qmd     # QMD generat dinàmicament des de Python
+└─ README.md                # Aquest fitxer
 ```
 
-## ⚡ Features
+## ⚡ Característiques
+1. Processament automàtic de CSV (add_date.py)
+    - Detecta fitxers CSV a data/raw/
+    - Agrupa fitxers per punts de mesura (STE-1, STE-2, …, E800, PEC)
+    - Extreu automàticament la data de mesura dels noms dels fitxers
+2. Generació de gràfics interactius (create_plots.py)
+    - Té dues funcions:
+    2.1. Batch plot
+        - Per crear els gràfics de tots els arxius csv que hi ha a raw
+    2.2. Previsualitza un gràfic
+        - Utilitza Plotly per a gràfics HTML interactius
+        - Les figures s’integren dins l’informe Quarto per a anàlisi immediata
+        - La mida dels gràfics es pot ajustar dinàmicament (això potser es mentida)
+3. Creació dinàmica d’informes (create_report_html.py/create_report_pdf.py)
+    - A partir dels grafics generats es pot crear un informe que recull totes les dades.
+    - Python create_report.py genera el fitxer Quarto markdown (.qmd)
+    - Títols, dates i seccions s’afegeixen automàticament segons els CSV
+    - Els blocs de codi es poden ocultar per a un informe més net
+    - Els arxius de quarto estan preparats per exportar directament a html per visualitzar els gràfics interactivament o en pdf per imprimir.
+4. Creació de planol amb els punts analitzats (create_map.py)
+    - A partir de les dades es poden recopilar en un excel (punts_mesura) les velocitats en els diferents punts
+    - El programa crea un mapa per visualitzar de forma interactiva aquestes dades recopilades sobre el terreny.
+5. Creació de diagrama sankey (crate_sankey.py)
+    - A partir de les dades es pot omplir l'excel de sankey_nodes
+    - Amb aquestes dades es genera un diagrama amb els balanços de cabal tipus sankey
+6. GUI per executar totes aquestes comandes.
+    - Permet navegar per totes aquestes funcions.
+    - A la GUI li falta implementar la creació dinamica d'informes.
 
-1. Automated CSV Processing
-    - Detects CSV files in data/raw/
-    - Groups files by measurement points (STE-1, STE-2, …, E800, PEC)
-    - Automatically extracts the measurement date from filenames
+## 🛠️ Flux de treball 
+0. Instal·lar dependències
 
-2. Interactive Plot Generation
-    - Uses Plotly for interactive HTML plots
-    - Figures are embedded in the Quarto report for immediate analysis
-    - Plot size can be adjusted dynamically
+Millor instalar el "enviroment" `requirements.yml`
 
-3. Dynamic Report Creation
-    - Python create_report.py generates Quarto markdown (.qmd)
-    - Titles, dates, and sections are automatically added based on CSV filenames
-    - Code chunks can be hidden for a clean report
-
-4. PDF/Printable Reports
-    - Optional workflow to export static PNG figures
-    - Generate a PDF-ready report using Quarto from the PNG-based QMD
-    - Automatic page breaks and pagination for printing
-
-5. File Sorting & Naming Automation
-    - CSVs with STE-1, STE-2 … STE-10 are sorted numerically
-    - Optional zero-padding (e.g., STE-01) to maintain correct order
-
-## 🛠️ Usage
-1. Install dependencies
 ```bash
 pip install pandas plotly kaleido quarto
 ```
@@ -66,45 +72,21 @@ pip install pandas plotly kaleido quarto
 
 `quarto` must be installed for rendering QMD files.
 
-2. Generate the interactive HTML report
-```bash
-python src/create_report.py
-quarto render report_generated.qmd
-```
-    - Opens `report_generated.html` with interactive plots.
-    - Useful for exploring the data during analysis.
+Disclaimer: No se si només kalideo i quarto son suficients!
 
-3. Generate a static, printable report
-    1. Modify create_plots.py to export figures as PNG:
+Generar csv > generar grafiques > generar informe > editar excel punts_mesura > generar i visualitzar mapa > editar excel sankey_nodes > generar i visualitzar diagrama
 
-    ```bash
-    fig.write_image(f"outputs/{csv_file_name}.png", width=800, height=400)
-    ```
-
-    2. Modify `create_report_png.py` (or reuse the main script) to embed PNG images instead of interactive plots:
-
-    ```bash
-    ![](outputs/STE-01_20251204.png){ width=80% }
-    ```
-
-    3. Render PDF from the PNG-based Quarto file:
-
-    ```bash
-    quarto render report_png.qmd --to pdf
-    ```
-    
-    - Ensures figures are fixed-size. paginated, and ready to print.
-
-## 🧩 Customization
+## 🧩 Personaliotzació
 - Variables to plot: Edit the variables_to_plot list in create_report.py
 - Figure size: Adjust in create_plotly_plot() or write_image()
 - Measurement point detection: Modify the regex in point_sort_key() for custom naming schemes
 
 ## ⚙️ Notes
-- Keep interactive HTML for analysis; use PNG exports for final PDF/printing.
-- CSV filenames must include the measurement point (e.g., STE-2) and date (YYYYMMDD).
-- Zero-padded STE numbers (e.g., STE-01) ensure correct numeric sorting.
+- Mantén HTML interactiu per a l’anàlisi; utilitza PNG per a PDF/impressió
+- Els noms dels CSV han d’incloure el punt de mesura (p. ex. STE-2) i la data (YYYYMMDD)
+- Els números STE amb zero inicial (p. ex. STE-01) asseguren l’ordre correcte
 
-## 👤 Author
-**Arnau Coronado Nadal**
+## 👤 Autor
+
+Arnau Coronado Nadal
 Estudi de cabals Euromed
