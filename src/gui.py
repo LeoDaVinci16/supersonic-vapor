@@ -153,6 +153,7 @@ class SXS_GUI(tk.Tk):
     # Tasks
     # -----------------------------
     def run_map(self):
+        self.run_excel2csv
         excel_file = self.ask_file(DEFAULT_MAP_EXCEL, [("CSV or Excel", "*.csv *.xlsx *.xls")])
         if not excel_file:
             return
@@ -213,6 +214,7 @@ class SXS_GUI(tk.Tk):
         create_plots.preview_plot(csv_path, variables=[magnitude_col], plot_folder=DEFAULT_PLOT_FOLDER, gui=True)
 
     def run_sankey(self):
+        self.run_excel2csv
         sankey_file = self.ask_file(DEFAULT_SANKEY_FILE, [("CSV/Excel", "*.csv *.xlsx *.xls")])
         if not sankey_file:
             return

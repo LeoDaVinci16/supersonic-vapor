@@ -41,7 +41,7 @@ def load_background_image(img_filename):
     return Image.open(img_path)
 
 def load_measure_points(csv_filename):
-    csv_path = os.path.join(RAW_FOLDER, "csv", csv_filename)
+    csv_path = os.path.join(RAW_FOLDER, "docs_csv", csv_filename)
     if not os.path.exists(csv_path):
         raise FileNotFoundError(f"CSV file not found: {csv_path}")
 
@@ -90,9 +90,13 @@ def create_click_handler(ax, df, magnitude_col, text_boxes):
                     text_boxes[label].remove()
                     del text_boxes[label]
                 else:
+                    try:
+                        val = f"{float(od_val):.4f}"
+                    except (ValueError, TypeError):
+                        val = od_val
                     txt = ax.text(
                         x, y + 20,
-                        f"Measure point: {label}\n {magnitude_col} = {od_val} mm",
+                        f"Punt de mesura: {label}\n {magnitude_col} = {val}",
                         fontsize=12,
                         ha="center",
                         bbox=dict(facecolor="white", alpha=0.7)
@@ -108,11 +112,10 @@ def toggle_all(ax, df, magnitude_col, text_boxes, fig):
         label = str(row["id"])
         x, y = row["x"], row["y"]
         od_val = row[magnitude_col]
-
         if label not in text_boxes:
             txt = ax.text(
                 x, y + 20,
-                f"Measure point: {label}\n {magnitude_col} = {od_val} mm",
+                f"Punt de mesura: {label}\n {magnitude_col} = {od_val}",
                 fontsize=12,
                 ha="center",
                 bbox=dict(facecolor="white", alpha=0.7)
