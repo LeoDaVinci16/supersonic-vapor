@@ -138,7 +138,7 @@ def main_sankey(df, magnitude_col, title="", file_path=None):
 # 4️⃣ ENTRY POINT
 # ==============================
 if __name__ == "__main__":
-    DEFAULT_FILE = os.path.join("data", "csv", "sankey_nodes.csv")
+    DEFAULT_FILE = os.path.join("data", "docs_csv", "sankey_nodes.csv")
     file_path = get_input_file(DEFAULT_FILE)
     df, file_path, numeric_cols = load_file(file_path)
     magnitude_col = choose_magnitude_column(df)
