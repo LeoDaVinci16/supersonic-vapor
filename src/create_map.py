@@ -102,8 +102,10 @@ def create_click_handler(ax, df, magnitude_col, text_boxes):
                         bbox=dict(facecolor="white", alpha=0.7)
                     )
                     text_boxes[label] = txt
+                    DraggableText(txt)
                 ax.figure.canvas.draw()
-    return on_click
+    return on_click 
+
 
 def toggle_all(ax, df, magnitude_col, text_boxes, fig):
     any_visible = any([txt.get_visible() for txt in text_boxes.values()]) if text_boxes else False
@@ -121,10 +123,12 @@ def toggle_all(ax, df, magnitude_col, text_boxes, fig):
                 bbox=dict(facecolor="white", alpha=0.7)
             )
             text_boxes[label] = txt
-
+            DraggableText(txt)
         text_boxes[label].set_visible(not any_visible)
 
-    fig.canvas.draw()   
+    fig.canvas.draw()
+
+
 
 # ==============================
 # 5️⃣ MAGNITUDE SELECTION
@@ -160,6 +164,41 @@ def main_file(file_path, magnitude_col=DEFAULT_MAGNITUDE):
     btn_toggle.on_clicked(lambda event: toggle_all(ax, df, magnitude_col, text_boxes, fig))
 
     plt.show()
+
+class DraggableText:
+    def __init__(self, text):
+        self.text = text
+        self.press = None
+        self.background = None
+        self.cid_press = text.figure.canvas.mpl_connect('button_press_event', self.on_press)
+        self.cid_release = text.figure.canvas.mpl_connect('button_release_event', self.on_release)
+        self.cid_motion = text.figure.canvas.mpl_connect('motion_notify_event', self.on_motion)
+
+    def on_press(self, event):
+        if event.inaxes != self.text.axes:
+            return
+        contains, attr = self.text.contains(event)
+        if not contains:
+            return
+        # Save initial positions
+        self.press = (self.text.get_position(), event.x, event.y)
+
+    def on_motion(self, event):
+        if self.press is None or event.inaxes != self.text.axes:
+            return
+        (x0, y0), xpress, ypress = self.press
+        # Compute movement in display coordinates
+        dx = event.x - xpress
+        dy = event.y - ypress
+        # Convert display units to data coordinates
+        inv = self.text.axes.transData.inverted()
+        x0_disp, y0_disp = self.text.axes.transData.transform((x0, y0))
+        x_new, y_new = inv.transform((x0_disp + dx, y0_disp + dy))
+        self.text.set_position((x_new, y_new))
+        self.text.figure.canvas.draw_idle()
+
+    def on_release(self, event):
+        self.press = None
 
 # ==============================
 # 6️⃣ MAIN
