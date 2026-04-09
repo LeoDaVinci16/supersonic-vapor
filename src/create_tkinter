@@ -1,0 +1,115 @@
+import tkinter as tk
+from pathlib import Path
+import pandas as pd
+from PIL import Image, ImageTk
+
+# ==============================
+# 0️⃣ CONFIG
+# ==============================
+ROOT_FOLDER = Path(__file__).parents[1]
+RAW_FOLDER = ROOT_FOLDER / "data"
+
+DEFAULT_IMG_FILE = "planol.png"
+DEFAULT_EXCEL_FILE = "punts-mesura.csv"
+DEFAULT_MAGNITUDE = "DN"
+
+# ==============================
+# 1️⃣ HELPER FUNCTIONS
+# ==============================
+def load_measure_points(csv_filename):
+    csv_path = RAW_FOLDER / "docs_csv" / csv_filename
+    if not csv_path.exists():
+        raise FileNotFoundError(f"CSV file not found: {csv_path}")
+    df = pd.read_csv(csv_path, on_bad_lines='skip')
+    df = df.dropna(subset=["x", "y"])
+    return df
+
+def format_value(val):
+    """Format numeric values to 4 decimals if possible."""
+    try:
+        return f"{float(val):.4f}"
+    except (ValueError, TypeError):
+        return str(val)
+
+# ==============================
+# 2️⃣ DRAGGABLE LABEL CLASS
+# ==============================
+class DraggableLabel:
+    def __init__(self, widget):
+        self.widget = widget
+        self.widget.bind("<ButtonPress-1>", self.on_press)
+        self.widget.bind("<B1-Motion>", self.on_drag)
+
+    def on_press(self, event):
+        self.startX = event.x
+        self.startY = event.y
+
+    def on_drag(self, event):
+        x = self.widget.winfo_x() + (event.x - self.startX)
+        y = self.widget.winfo_y() + (event.y - self.startY)
+        self.widget.place(x=x, y=y)
+
+# ==============================
+# 3️⃣ MAIN VISUALIZER
+# ==============================
+class Visualizer:
+    def __init__(self, root, img_file, csv_file, magnitude_col=DEFAULT_MAGNITUDE):
+        self.root = root
+        self.root.title("SCADA-like Visualizer")
+        self.magnitude_col = magnitude_col
+
+        # Load background image
+        self.bg_image = Image.open(RAW_FOLDER / img_file)
+        self.bg_width, self.bg_height = (1800, 1100)
+        print(self.bg_image.size)
+        self.bg_photo = ImageTk.PhotoImage(self.bg_image)
+
+        # Canvas for image and points
+        self.canvas = tk.Canvas(root, width=self.bg_width, height=self.bg_height)
+        self.canvas.pack()
+
+        self.canvas.create_image(0, 0, anchor="nw", image=self.bg_photo)
+
+        # Load points
+        self.df = load_measure_points(csv_file)
+        self.labels = {}  # dict of label widgets
+
+        # Create points and labels
+        for _, row in self.df.iterrows():
+            x, y = row["x"], row["y"]
+            label_id = str(row["id"])
+            value = format_value(row[self.magnitude_col])
+
+            # Small point as oval
+            radius = 5
+            self.canvas.create_oval(x-radius, y-radius, x+radius, y+radius, fill="red")
+
+            # Label
+            lbl = tk.Label(root, text=f"{label_id}\n{self.magnitude_col}={value}",
+                           bg="white", font=("Arial", 10), bd=1, relief="solid")
+            lbl.place(x=x, y=y-20)  # initial position above point
+            DraggableLabel(lbl)  # make draggable
+            self.labels[label_id] = lbl
+
+        # Toggle button
+        self.toggle_btn = tk.Button(root, text="Show/Hide All", command=self.toggle_all)
+        self.toggle_btn.pack(pady=10)
+
+        self.visible = True
+
+    def toggle_all(self):
+        self.visible = not self.visible
+        for lbl in self.labels.values():
+            if self.visible:
+                lbl.place()  # restore previous place
+            else:
+                lbl.place_forget()  # hide
+
+# ==============================
+# 4️⃣ RUN
+# ==============================
+if __name__ == "__main__":
+    root = tk.Tk()
+    root.geometry("800x600")  # window size can be adjusted
+    visualizer = Visualizer(root, DEFAULT_IMG_FILE, DEFAULT_EXCEL_FILE, DEFAULT_MAGNITUDE)
+    root.mainloop()
