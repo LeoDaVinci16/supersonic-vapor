@@ -6,6 +6,7 @@ from pathlib import Path
 import sys
 import os
 import pandas as pd
+from tkinter.filedialog import askopenfilename
 
 # -----------------------------
 # Paths & defaults
@@ -47,7 +48,7 @@ class SXS_GUI(tk.Tk):
 
         tk.Button(tasks_frame, text="Batch plot", command=self.run_batch_plots, **btn_style).pack(pady=5)
         tk.Button(tasks_frame, text="Preview plot", command=self.run_prev_plots, **btn_style).pack(pady=5)
-        tk.Button(tasks_frame, text="Euromed Map", command=self.run_map, **btn_style).pack(pady=5)
+        tk.Button(tasks_frame, text="Euromed Map", command=self.run_tkinter, **btn_style).pack(pady=5)
         tk.Button(tasks_frame, text="Sankey Diagram", command=self.run_sankey, **btn_style).pack(pady=5)
 
         # -----------------------------
@@ -176,6 +177,53 @@ class SXS_GUI(tk.Tk):
             create_map.main_file(excel_file, magnitude_col)
         except Exception as e:
             messagebox.showerror("Processing Error", f"Failed in main_file:\n{e}")
+
+    DEFAULT_MAP_EXCEL = "punts-mesura.csv"  # default Excel/CSV file
+
+    def run_tkinter(self):
+        # Ask for the CSV/Excel file
+        excel_file = askopenfilename(
+            title="Select Excel/CSV file",
+            filetypes=[("CSV or Excel", "*.csv *.xlsx *.xls")]
+        )
+        if not excel_file:
+            return
+
+        # Try to import the Tkinter visualizer
+        try:
+            import create_tkinter
+        except Exception as e:
+            messagebox.showerror("Import Error", f"Failed to import create_tkinter:\n{e}")
+            return
+
+        # Load the data
+        try:
+            if excel_file.lower().endswith(".csv"):
+                df = pd.read_csv(excel_file)
+            else:
+                # If Excel, use load_measure_points from create_tkinter
+                df = create_tkinter.load_measure_points(excel_file)
+        except Exception as e:
+            messagebox.showerror("Load Error", f"Failed to load data:\n{e}")
+            return
+
+        # Ask for magnitude column
+        columns = df.columns.tolist()
+        magnitude_col = getattr(self, "ask_magnitude_column", lambda cols, default="DN": default)(columns, default="DN")
+
+        # Open Visualizer in a Toplevel window
+        try:
+            top = tk.Toplevel(self)  # use Toplevel instead of Tk
+            top.title("Map Visualizer")
+            visualizer = create_tkinter.Visualizer(
+                top, 
+                create_tkinter.DEFAULT_IMG_FILE,
+                excel_file,
+                magnitude_col
+            )
+            # No mainloop! The main app already has one running
+        except Exception as e:
+            messagebox.showerror("Processing Error", f"Failed to run Visualizer:\n{e}")
 
     def run_batch_plots(self):
         script_dir = os.path.dirname(os.path.abspath(__file__))

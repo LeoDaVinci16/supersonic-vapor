@@ -1,3 +1,5 @@
+# create_tkinter.py
+
 import tkinter as tk
 from pathlib import Path
 import pandas as pd
@@ -8,13 +10,17 @@ from PIL import Image, ImageTk
 # ==============================
 ROOT_FOLDER = Path(__file__).parents[1]
 RAW_FOLDER = ROOT_FOLDER / "data"
+CSV_FOLDER = RAW_FOLDER / "docs_csv"
 
 DEFAULT_IMG_FILE = "planol.png"
 DEFAULT_EXCEL_FILE = "punts-mesura.csv"
 DEFAULT_MAGNITUDE = "DN"
 
+# ==============================
+# HELPER FUNCTIONS
+# ==============================
 def load_measure_points(csv_filename):
-    csv_path = RAW_FOLDER / "docs_csv" / csv_filename
+    csv_path = CSV_FOLDER / csv_filename
     if not csv_path.exists():
         raise FileNotFoundError(f"CSV file not found: {csv_path}")
     df = pd.read_csv(csv_path, on_bad_lines='skip')
@@ -27,6 +33,9 @@ def format_value(val):
     except (ValueError, TypeError):
         return str(val)
 
+# ==============================
+# DRAGGABLE LABEL
+# ==============================
 class DraggableLabel:
     def __init__(self, widget):
         self.widget = widget
@@ -42,8 +51,11 @@ class DraggableLabel:
         y = self.widget.winfo_y() + (event.y - self.startY)
         self.widget.place(x=x, y=y)
 
+# ==============================
+# VISUALIZER
+# ==============================
 class Visualizer:
-    def __init__(self, root, img_file, csv_file, magnitude_col=DEFAULT_MAGNITUDE):
+    def __init__(self, root, img_file=DEFAULT_IMG_FILE, csv_file=DEFAULT_EXCEL_FILE, magnitude_col=DEFAULT_MAGNITUDE):
         self.root = root
         self.magnitude_col = magnitude_col
         self.df = load_measure_points(csv_file)
@@ -55,11 +67,9 @@ class Visualizer:
         self.orig_image = Image.open(RAW_FOLDER / img_file)
         self.orig_width, self.orig_height = self.orig_image.size
 
-        # Canvas fills entire window
+        # Canvas fills window
         self.canvas = tk.Canvas(root)
         self.canvas.pack(fill="both", expand=True)
-
-        # Bind resize event
         self.canvas.bind("<Configure>", self.on_resize)
 
         # Create labels
@@ -72,23 +82,22 @@ class Visualizer:
             self.labels[label_id] = lbl
             self.visible[label_id] = False
 
-        # Toggle / remove buttons
+        # Buttons
         self.toggle_btn = tk.Button(root, text="Show/Hide All", command=self.toggle_all)
         self.toggle_btn.pack(pady=5)
 
     def on_resize(self, event):
-        # Scale factors
         w, h = event.width, event.height
         self.scale_x = w / self.orig_width
         self.scale_y = h / self.orig_height
 
-        # Resize image
         self.resized_image = self.orig_image.resize((w, h), Image.Resampling.LANCZOS)
         self.bg_photo = ImageTk.PhotoImage(self.resized_image)
+
         self.canvas.delete("all")
         self.canvas.create_image(0, 0, anchor="nw", image=self.bg_photo)
+        self.canvas.bg_photo = self.bg_photo  # keep reference
 
-        # Redraw points
         self.dot_ids.clear()
         for _, row in self.df.iterrows():
             x = row["x"] * self.scale_x
@@ -99,10 +108,9 @@ class Visualizer:
             self.dot_ids[dot] = label_id
             self.canvas.tag_bind(dot, "<Button-1>", self.on_dot_click)
 
-        # Update visible labels
+        # Reposition visible labels
         for label_id, lbl in self.labels.items():
             if self.visible[label_id]:
-                # Position above corresponding point
                 for dot_id, l_id in self.dot_ids.items():
                     if l_id == label_id:
                         coords = self.canvas.coords(dot_id)
@@ -131,7 +139,6 @@ class Visualizer:
                 lbl.place_forget()
                 self.visible[label_id] = False
             else:
-                # Position above corresponding dot
                 for dot_id, l_id in self.dot_ids.items():
                     if l_id == label_id:
                         coords = self.canvas.coords(dot_id)
@@ -140,8 +147,11 @@ class Visualizer:
                         lbl.place(x=x, y=y)
                         self.visible[label_id] = True
 
+# ==============================
+# TEST RUN
+# ==============================
 if __name__ == "__main__":
     root = tk.Tk()
-    root.geometry("1000x800")  # initial window size
-    visualizer = Visualizer(root, DEFAULT_IMG_FILE, DEFAULT_EXCEL_FILE, DEFAULT_MAGNITUDE)
+    root.geometry("1000x800")
+    visualizer = Visualizer(root)
     root.mainloop()
