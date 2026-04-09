@@ -58,58 +58,103 @@ class Visualizer:
         self.root.title("SCADA-like Visualizer")
         self.magnitude_col = magnitude_col
 
-        # Load background image
+        # Desired display size
+        display_width = 800
+        display_height = 600
+
+        # Load and resize background image
         self.bg_image = Image.open(RAW_FOLDER / img_file)
-        self.bg_width, self.bg_height = (1800, 1100)
-        print(self.bg_image.size)
+        orig_width, orig_height = self.bg_image.size
+        self.scale_x = display_width / orig_width
+        self.scale_y = display_height / orig_height
+        self.bg_image = self.bg_image.resize((display_width, display_height), Image.Resampling.LANCZOS)
         self.bg_photo = ImageTk.PhotoImage(self.bg_image)
 
-        # Canvas for image and points
-        self.canvas = tk.Canvas(root, width=self.bg_width, height=self.bg_height)
+        # Canvas
+        self.canvas = tk.Canvas(root, width=display_width, height=display_height)
         self.canvas.pack()
-
         self.canvas.create_image(0, 0, anchor="nw", image=self.bg_photo)
 
         # Load points
         self.df = load_measure_points(csv_file)
-        self.labels = {}  # dict of label widgets
+        self.labels = {}     # label widgets
+        self.dot_ids = {}    # canvas oval ids
+        self.visible = {}    # visibility per label
 
-        # Create points and labels
+        # Create points
         for _, row in self.df.iterrows():
-            x, y = row["x"], row["y"]
+            x = row["x"] * self.scale_x
+            y = row["y"] * self.scale_y
             label_id = str(row["id"])
             value = format_value(row[self.magnitude_col])
 
-            # Small point as oval
-            radius = 5
-            self.canvas.create_oval(x-radius, y-radius, x+radius, y+radius, fill="red")
+            # Draw red dot
+            r = 5
+            dot = self.canvas.create_oval(x-r, y-r, x+r, y+r, fill="red", outline="")
+            self.dot_ids[dot] = label_id
 
-            # Label
-            lbl = tk.Label(root, text=f"{label_id}\n{self.magnitude_col}={value}",
-                           bg="white", font=("Arial", 10), bd=1, relief="solid")
-            lbl.place(x=x, y=y-20)  # initial position above point
-            DraggableLabel(lbl)  # make draggable
+            # Bind click to toggle label
+            self.canvas.tag_bind(dot, "<Button-1>", self.on_dot_click)
+
+            # Initialize label but do not place yet
+            lbl = tk.Label(root,
+                           text=f"{label_id}\n{self.magnitude_col}={value}",
+                           bg="white",
+                           font=("Arial", 10),
+                           bd=1,
+                           relief="solid")
+            DraggableLabel(lbl)
             self.labels[label_id] = lbl
+            self.visible[label_id] = False
 
-        # Toggle button
-        self.toggle_btn = tk.Button(root, text="Show/Hide All", command=self.toggle_all)
-        self.toggle_btn.pack(pady=10)
+        # Toggle all
+        self.toggle_btn = tk.Button(root, text="Mostra/Amaga'ls tots", command=self.toggle_all)
+        self.toggle_btn.pack(pady=5)
 
-        self.visible = True
 
+    # Click a red dot to show/hide label
+    def on_dot_click(self, event):
+        dot = event.widget.find_withtag("current")[0]
+        label_id = self.dot_ids[dot]
+        lbl = self.labels[label_id]
+        if self.visible[label_id]:
+            lbl.place_forget()
+            self.visible[label_id] = False
+        else:
+            # Place above point
+            coords = self.canvas.coords(dot)
+            x = (coords[0] + coords[2]) / 2
+            y = coords[1] - 20
+            lbl.place(x=x, y=y)
+            self.visible[label_id] = True
+
+    # Show/hide all labels
     def toggle_all(self):
-        self.visible = not self.visible
-        for lbl in self.labels.values():
-            if self.visible:
-                lbl.place()  # restore previous place
+        any_visible = any(self.visible.values())
+        for label_id, lbl in self.labels.items():
+            if any_visible:
+                lbl.place_forget()
+                self.visible[label_id] = False
             else:
-                lbl.place_forget()  # hide
+                # Place above corresponding dot
+                dot_id = None
+                for k, v in self.dot_ids.items():
+                    if v == label_id:
+                        dot_id = k
+                        break
+                if dot_id is not None:
+                    coords = self.canvas.coords(dot_id)
+                    x = (coords[0] + coords[2]) / 2
+                    y = coords[1] - 20
+                    lbl.place(x=x, y=y)
+                    self.visible[label_id] = True
+
 
 # ==============================
 # 4️⃣ RUN
 # ==============================
 if __name__ == "__main__":
     root = tk.Tk()
-    root.geometry("800x600")  # window size can be adjusted
+    root.geometry("850x700")
     visualizer = Visualizer(root, DEFAULT_IMG_FILE, DEFAULT_EXCEL_FILE, DEFAULT_MAGNITUDE)
     root.mainloop()
