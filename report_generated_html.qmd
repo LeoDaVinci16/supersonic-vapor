@@ -1,0 +1,732 @@
+---
+title: "Informe dels cabals (HTML)"
+author: Arnau Coronado Nadal
+execute:
+  cache: true
+  cache-dir: _quarto_cache_html
+format:
+  html:
+    toc: true
+    code-fold: true
+---
+
+## Punt de mesura STE-01
+
+Gràfiques de les mesures fetes en el punt STE-01:
+
+### 20251204_141433_STE-01.csv (2025-12-04)
+
+```{python}
+import sys, os
+sys.path.append(os.path.abspath("src"))
+from create_plots import load_csv, create_plotly_plot
+import plotly.io as pio
+
+csv_path = r"data/raw\20251204_141433_STE-01.csv"
+variable = "A Flow velocity [m/s]"
+
+df = load_csv(csv_path)
+fig = create_plotly_plot(df, variable, csv_path)
+
+# Show interactive plot in HTML
+pio.renderers.default = "notebook_connected"
+fig.show()
+```
+
+### 20251205_044520_STE-01.csv (2025-12-05)
+
+```{python}
+import sys, os
+sys.path.append(os.path.abspath("src"))
+from create_plots import load_csv, create_plotly_plot
+import plotly.io as pio
+
+csv_path = r"data/raw\20251205_044520_STE-01.csv"
+variable = "A Flow velocity [m/s]"
+
+df = load_csv(csv_path)
+fig = create_plotly_plot(df, variable, csv_path)
+
+# Show interactive plot in HTML
+pio.renderers.default = "notebook_connected"
+fig.show()
+```
+
+## Punt de mesura STE-02
+
+Gràfiques de les mesures fetes en el punt STE-02:
+
+### 20251104_103620_STE-02.csv (2025-11-04)
+
+```{python}
+import sys, os
+sys.path.append(os.path.abspath("src"))
+from create_plots import load_csv, create_plotly_plot
+import plotly.io as pio
+
+csv_path = r"data/raw\20251104_103620_STE-02.csv"
+variable = "A Flow velocity [m/s]"
+
+df = load_csv(csv_path)
+fig = create_plotly_plot(df, variable, csv_path)
+
+# Show interactive plot in HTML
+pio.renderers.default = "notebook_connected"
+fig.show()
+```
+
+### 20251114_112101_STE-02.csv (2025-11-14)
+
+```{python}
+import sys, os
+sys.path.append(os.path.abspath("src"))
+from create_plots import load_csv, create_plotly_plot
+import plotly.io as pio
+
+csv_path = r"data/raw\20251114_112101_STE-02.csv"
+variable = "A Flow velocity [m/s]"
+
+df = load_csv(csv_path)
+fig = create_plotly_plot(df, variable, csv_path)
+
+# Show interactive plot in HTML
+pio.renderers.default = "notebook_connected"
+fig.show()
+```
+
+### 20251117_092425_STE-02.csv (2025-11-17)
+
+```{python}
+import sys, os
+sys.path.append(os.path.abspath("src"))
+from create_plots import load_csv, create_plotly_plot
+import plotly.io as pio
+
+csv_path = r"data/raw\20251117_092425_STE-02.csv"
+variable = "A Flow velocity [m/s]"
+
+df = load_csv(csv_path)
+fig = create_plotly_plot(df, variable, csv_path)
+
+# Show interactive plot in HTML
+pio.renderers.default = "notebook_connected"
+fig.show()
+```
+
+## Punt de mesura STE-03
+
+Gràfiques de les mesures fetes en el punt STE-03:
+
+### 20251027_143957_STE-03.csv (2025-10-27)
+
+```{python}
+import sys, os
+sys.path.append(os.path.abspath("src"))
+from create_plots import load_csv, create_plotly_plot
+import plotly.io as pio
+
+csv_path = r"data/raw\20251027_143957_STE-03.csv"
+variable = "A Flow velocity [m/s]"
+
+df = load_csv(csv_path)
+fig = create_plotly_plot(df, variable, csv_path)
+
+# Show interactive plot in HTML
+pio.renderers.default = "notebook_connected"
+fig.show()
+```
+
+### 20251028_110853_STE-03.csv (2025-10-28)
+
+```{python}
+import sys, os
+sys.path.append(os.path.abspath("src"))
+from create_plots import load_csv, create_plotly_plot
+import plotly.io as pio
+
+csv_path = r"data/raw\20251028_110853_STE-03.csv"
+variable = "A Flow velocity [m/s]"
+
+df = load_csv(csv_path)
+fig = create_plotly_plot(df, variable, csv_path)
+
+# Show interactive plot in HTML
+pio.renderers.default = "notebook_connected"
+fig.show()
+```
+
+### 20251103_125239_STE-03.csv (2025-11-03)
+
+```{python}
+import sys, os
+sys.path.append(os.path.abspath("src"))
+from create_plots import load_csv, create_plotly_plot
+import plotly.io as pio
+
+csv_path = r"data/raw\20251103_125239_STE-03.csv"
+variable = "A Flow velocity [m/s]"
+
+df = load_csv(csv_path)
+fig = create_plotly_plot(df, variable, csv_path)
+
+# Show interactive plot in HTML
+pio.renderers.default = "notebook_connected"
+fig.show()
+```
+
+### 20251110_095343_STE-03.csv (2025-11-10)
+
+```{python}
+import sys, os
+sys.path.append(os.path.abspath("src"))
+from create_plots import load_csv, create_plotly_plot
+import plotly.io as pio
+
+csv_path = r"data/raw\20251110_095343_STE-03.csv"
+variable = "A Flow velocity [m/s]"
+
+df = load_csv(csv_path)
+fig = create_plotly_plot(df, variable, csv_path)
+
+# Show interactive plot in HTML
+pio.renderers.default = "notebook_connected"
+fig.show()
+```
+
+### 20251111_110949_STE-03.csv (2025-11-11)
+
+```{python}
+import sys, os
+sys.path.append(os.path.abspath("src"))
+from create_plots import load_csv, create_plotly_plot
+import plotly.io as pio
+
+csv_path = r"data/raw\20251111_110949_STE-03.csv"
+variable = "A Flow velocity [m/s]"
+
+df = load_csv(csv_path)
+fig = create_plotly_plot(df, variable, csv_path)
+
+# Show interactive plot in HTML
+pio.renderers.default = "notebook_connected"
+fig.show()
+```
+
+### 20251112_114717_STE-03.csv (2025-11-12)
+
+```{python}
+import sys, os
+sys.path.append(os.path.abspath("src"))
+from create_plots import load_csv, create_plotly_plot
+import plotly.io as pio
+
+csv_path = r"data/raw\20251112_114717_STE-03.csv"
+variable = "A Flow velocity [m/s]"
+
+df = load_csv(csv_path)
+fig = create_plotly_plot(df, variable, csv_path)
+
+# Show interactive plot in HTML
+pio.renderers.default = "notebook_connected"
+fig.show()
+```
+
+### 20251112_122634_STE-03.csv (2025-11-12)
+
+```{python}
+import sys, os
+sys.path.append(os.path.abspath("src"))
+from create_plots import load_csv, create_plotly_plot
+import plotly.io as pio
+
+csv_path = r"data/raw\20251112_122634_STE-03.csv"
+variable = "A Flow velocity [m/s]"
+
+df = load_csv(csv_path)
+fig = create_plotly_plot(df, variable, csv_path)
+
+# Show interactive plot in HTML
+pio.renderers.default = "notebook_connected"
+fig.show()
+```
+
+### 20251122_003137_STE-03.csv (2025-11-22)
+
+```{python}
+import sys, os
+sys.path.append(os.path.abspath("src"))
+from create_plots import load_csv, create_plotly_plot
+import plotly.io as pio
+
+csv_path = r"data/raw\20251122_003137_STE-03.csv"
+variable = "A Flow velocity [m/s]"
+
+df = load_csv(csv_path)
+fig = create_plotly_plot(df, variable, csv_path)
+
+# Show interactive plot in HTML
+pio.renderers.default = "notebook_connected"
+fig.show()
+```
+
+### 20251126_141746_STE-03.csv (2025-11-26)
+
+```{python}
+import sys, os
+sys.path.append(os.path.abspath("src"))
+from create_plots import load_csv, create_plotly_plot
+import plotly.io as pio
+
+csv_path = r"data/raw\20251126_141746_STE-03.csv"
+variable = "A Flow velocity [m/s]"
+
+df = load_csv(csv_path)
+fig = create_plotly_plot(df, variable, csv_path)
+
+# Show interactive plot in HTML
+pio.renderers.default = "notebook_connected"
+fig.show()
+```
+
+### 20251127_132919_STE-03.csv (2025-11-27)
+
+```{python}
+import sys, os
+sys.path.append(os.path.abspath("src"))
+from create_plots import load_csv, create_plotly_plot
+import plotly.io as pio
+
+csv_path = r"data/raw\20251127_132919_STE-03.csv"
+variable = "A Flow velocity [m/s]"
+
+df = load_csv(csv_path)
+fig = create_plotly_plot(df, variable, csv_path)
+
+# Show interactive plot in HTML
+pio.renderers.default = "notebook_connected"
+fig.show()
+```
+
+### 20251127_133004_STE-03.csv (2025-11-27)
+
+```{python}
+import sys, os
+sys.path.append(os.path.abspath("src"))
+from create_plots import load_csv, create_plotly_plot
+import plotly.io as pio
+
+csv_path = r"data/raw\20251127_133004_STE-03.csv"
+variable = "A Flow velocity [m/s]"
+
+df = load_csv(csv_path)
+fig = create_plotly_plot(df, variable, csv_path)
+
+# Show interactive plot in HTML
+pio.renderers.default = "notebook_connected"
+fig.show()
+```
+
+### 20251201_155248_STE-03.csv (2025-12-01)
+
+```{python}
+import sys, os
+sys.path.append(os.path.abspath("src"))
+from create_plots import load_csv, create_plotly_plot
+import plotly.io as pio
+
+csv_path = r"data/raw\20251201_155248_STE-03.csv"
+variable = "A Flow velocity [m/s]"
+
+df = load_csv(csv_path)
+fig = create_plotly_plot(df, variable, csv_path)
+
+# Show interactive plot in HTML
+pio.renderers.default = "notebook_connected"
+fig.show()
+```
+
+### 20260205_131455_STE-03.csv (2026-02-05)
+
+```{python}
+import sys, os
+sys.path.append(os.path.abspath("src"))
+from create_plots import load_csv, create_plotly_plot
+import plotly.io as pio
+
+csv_path = r"data/raw\20260205_131455_STE-03.csv"
+variable = "A Flow velocity [m/s]"
+
+df = load_csv(csv_path)
+fig = create_plotly_plot(df, variable, csv_path)
+
+# Show interactive plot in HTML
+pio.renderers.default = "notebook_connected"
+fig.show()
+```
+
+## Punt de mesura STE-04
+
+Gràfiques de les mesures fetes en el punt STE-04:
+
+### 20251007_100341_STE-04.csv (2025-10-07)
+
+```{python}
+import sys, os
+sys.path.append(os.path.abspath("src"))
+from create_plots import load_csv, create_plotly_plot
+import plotly.io as pio
+
+csv_path = r"data/raw\20251007_100341_STE-04.csv"
+variable = "A Flow velocity [m/s]"
+
+df = load_csv(csv_path)
+fig = create_plotly_plot(df, variable, csv_path)
+
+# Show interactive plot in HTML
+pio.renderers.default = "notebook_connected"
+fig.show()
+```
+
+### 20251008_095114_STE-04.csv (2025-10-08)
+
+```{python}
+import sys, os
+sys.path.append(os.path.abspath("src"))
+from create_plots import load_csv, create_plotly_plot
+import plotly.io as pio
+
+csv_path = r"data/raw\20251008_095114_STE-04.csv"
+variable = "A Flow velocity [m/s]"
+
+df = load_csv(csv_path)
+fig = create_plotly_plot(df, variable, csv_path)
+
+# Show interactive plot in HTML
+pio.renderers.default = "notebook_connected"
+fig.show()
+```
+
+### 20251008_115126_STE-04.csv (2025-10-08)
+
+```{python}
+import sys, os
+sys.path.append(os.path.abspath("src"))
+from create_plots import load_csv, create_plotly_plot
+import plotly.io as pio
+
+csv_path = r"data/raw\20251008_115126_STE-04.csv"
+variable = "A Flow velocity [m/s]"
+
+df = load_csv(csv_path)
+fig = create_plotly_plot(df, variable, csv_path)
+
+# Show interactive plot in HTML
+pio.renderers.default = "notebook_connected"
+fig.show()
+```
+
+### 20251112_130310_STE-04.csv (2025-11-12)
+
+```{python}
+import sys, os
+sys.path.append(os.path.abspath("src"))
+from create_plots import load_csv, create_plotly_plot
+import plotly.io as pio
+
+csv_path = r"data/raw\20251112_130310_STE-04.csv"
+variable = "A Flow velocity [m/s]"
+
+df = load_csv(csv_path)
+fig = create_plotly_plot(df, variable, csv_path)
+
+# Show interactive plot in HTML
+pio.renderers.default = "notebook_connected"
+fig.show()
+```
+
+## Punt de mesura STE-05
+
+Gràfiques de les mesures fetes en el punt STE-05:
+
+### 20260316_085832_STE-05.csv (2026-03-16)
+
+```{python}
+import sys, os
+sys.path.append(os.path.abspath("src"))
+from create_plots import load_csv, create_plotly_plot
+import plotly.io as pio
+
+csv_path = r"data/raw\20260316_085832_STE-05.csv"
+variable = "A Flow velocity [m/s]"
+
+df = load_csv(csv_path)
+fig = create_plotly_plot(df, variable, csv_path)
+
+# Show interactive plot in HTML
+pio.renderers.default = "notebook_connected"
+fig.show()
+```
+
+### 20260316_134917_STE-05.csv (2026-03-16)
+
+```{python}
+import sys, os
+sys.path.append(os.path.abspath("src"))
+from create_plots import load_csv, create_plotly_plot
+import plotly.io as pio
+
+csv_path = r"data/raw\20260316_134917_STE-05.csv"
+variable = "A Flow velocity [m/s]"
+
+df = load_csv(csv_path)
+fig = create_plotly_plot(df, variable, csv_path)
+
+# Show interactive plot in HTML
+pio.renderers.default = "notebook_connected"
+fig.show()
+```
+
+## Punt de mesura STE-07
+
+Gràfiques de les mesures fetes en el punt STE-07:
+
+### 20260219_112332_STE-07.csv (2026-02-19)
+
+```{python}
+import sys, os
+sys.path.append(os.path.abspath("src"))
+from create_plots import load_csv, create_plotly_plot
+import plotly.io as pio
+
+csv_path = r"data/raw\20260219_112332_STE-07.csv"
+variable = "A Flow velocity [m/s]"
+
+df = load_csv(csv_path)
+fig = create_plotly_plot(df, variable, csv_path)
+
+# Show interactive plot in HTML
+pio.renderers.default = "notebook_connected"
+fig.show()
+```
+
+### 20260219_144829_STE-07.csv (2026-02-19)
+
+```{python}
+import sys, os
+sys.path.append(os.path.abspath("src"))
+from create_plots import load_csv, create_plotly_plot
+import plotly.io as pio
+
+csv_path = r"data/raw\20260219_144829_STE-07.csv"
+variable = "A Flow velocity [m/s]"
+
+df = load_csv(csv_path)
+fig = create_plotly_plot(df, variable, csv_path)
+
+# Show interactive plot in HTML
+pio.renderers.default = "notebook_connected"
+fig.show()
+```
+
+### 20260223_075303_STE-07.csv (2026-02-23)
+
+```{python}
+import sys, os
+sys.path.append(os.path.abspath("src"))
+from create_plots import load_csv, create_plotly_plot
+import plotly.io as pio
+
+csv_path = r"data/raw\20260223_075303_STE-07.csv"
+variable = "A Flow velocity [m/s]"
+
+df = load_csv(csv_path)
+fig = create_plotly_plot(df, variable, csv_path)
+
+# Show interactive plot in HTML
+pio.renderers.default = "notebook_connected"
+fig.show()
+```
+
+### 20260224_134917_STE-07.csv (2026-02-24)
+
+```{python}
+import sys, os
+sys.path.append(os.path.abspath("src"))
+from create_plots import load_csv, create_plotly_plot
+import plotly.io as pio
+
+csv_path = r"data/raw\20260224_134917_STE-07.csv"
+variable = "A Flow velocity [m/s]"
+
+df = load_csv(csv_path)
+fig = create_plotly_plot(df, variable, csv_path)
+
+# Show interactive plot in HTML
+pio.renderers.default = "notebook_connected"
+fig.show()
+```
+
+### 20260225_140608_STE-07.csv (2026-02-25)
+
+```{python}
+import sys, os
+sys.path.append(os.path.abspath("src"))
+from create_plots import load_csv, create_plotly_plot
+import plotly.io as pio
+
+csv_path = r"data/raw\20260225_140608_STE-07.csv"
+variable = "A Flow velocity [m/s]"
+
+df = load_csv(csv_path)
+fig = create_plotly_plot(df, variable, csv_path)
+
+# Show interactive plot in HTML
+pio.renderers.default = "notebook_connected"
+fig.show()
+```
+
+## Punt de mesura STE-08
+
+Gràfiques de les mesures fetes en el punt STE-08:
+
+### 20251118_024904_STE-08.csv (2025-11-18)
+
+```{python}
+import sys, os
+sys.path.append(os.path.abspath("src"))
+from create_plots import load_csv, create_plotly_plot
+import plotly.io as pio
+
+csv_path = r"data/raw\20251118_024904_STE-08.csv"
+variable = "A Flow velocity [m/s]"
+
+df = load_csv(csv_path)
+fig = create_plotly_plot(df, variable, csv_path)
+
+# Show interactive plot in HTML
+pio.renderers.default = "notebook_connected"
+fig.show()
+```
+
+### 20260309_103006_STE-08.csv (2026-03-09)
+
+```{python}
+import sys, os
+sys.path.append(os.path.abspath("src"))
+from create_plots import load_csv, create_plotly_plot
+import plotly.io as pio
+
+csv_path = r"data/raw\20260309_103006_STE-08.csv"
+variable = "A Flow velocity [m/s]"
+
+df = load_csv(csv_path)
+fig = create_plotly_plot(df, variable, csv_path)
+
+# Show interactive plot in HTML
+pio.renderers.default = "notebook_connected"
+fig.show()
+```
+
+### 20260309_133323_STE-08.csv (2026-03-09)
+
+```{python}
+import sys, os
+sys.path.append(os.path.abspath("src"))
+from create_plots import load_csv, create_plotly_plot
+import plotly.io as pio
+
+csv_path = r"data/raw\20260309_133323_STE-08.csv"
+variable = "A Flow velocity [m/s]"
+
+df = load_csv(csv_path)
+fig = create_plotly_plot(df, variable, csv_path)
+
+# Show interactive plot in HTML
+pio.renderers.default = "notebook_connected"
+fig.show()
+```
+
+## Punt de mesura STE-10
+
+Gràfiques de les mesures fetes en el punt STE-10:
+
+### 20251119_112337_STE-10.csv (2025-11-19)
+
+```{python}
+import sys, os
+sys.path.append(os.path.abspath("src"))
+from create_plots import load_csv, create_plotly_plot
+import plotly.io as pio
+
+csv_path = r"data/raw\20251119_112337_STE-10.csv"
+variable = "A Flow velocity [m/s]"
+
+df = load_csv(csv_path)
+fig = create_plotly_plot(df, variable, csv_path)
+
+# Show interactive plot in HTML
+pio.renderers.default = "notebook_connected"
+fig.show()
+```
+
+### 20251120_092331_STE-10.csv (2025-11-20)
+
+```{python}
+import sys, os
+sys.path.append(os.path.abspath("src"))
+from create_plots import load_csv, create_plotly_plot
+import plotly.io as pio
+
+csv_path = r"data/raw\20251120_092331_STE-10.csv"
+variable = "A Flow velocity [m/s]"
+
+df = load_csv(csv_path)
+fig = create_plotly_plot(df, variable, csv_path)
+
+# Show interactive plot in HTML
+pio.renderers.default = "notebook_connected"
+fig.show()
+```
+
+### 20251120_093239_STE-10.csv (2025-11-20)
+
+```{python}
+import sys, os
+sys.path.append(os.path.abspath("src"))
+from create_plots import load_csv, create_plotly_plot
+import plotly.io as pio
+
+csv_path = r"data/raw\20251120_093239_STE-10.csv"
+variable = "A Flow velocity [m/s]"
+
+df = load_csv(csv_path)
+fig = create_plotly_plot(df, variable, csv_path)
+
+# Show interactive plot in HTML
+pio.renderers.default = "notebook_connected"
+fig.show()
+```
+
+## Punt de mesura STE-11
+
+Gràfiques de les mesures fetes en el punt STE-11:
+
+### 20251121_025609_STE-11.csv (2025-11-21)
+
+```{python}
+import sys, os
+sys.path.append(os.path.abspath("src"))
+from create_plots import load_csv, create_plotly_plot
+import plotly.io as pio
+
+csv_path = r"data/raw\20251121_025609_STE-11.csv"
+variable = "A Flow velocity [m/s]"
+
+df = load_csv(csv_path)
+fig = create_plotly_plot(df, variable, csv_path)
+
+# Show interactive plot in HTML
+pio.renderers.default = "notebook_connected"
+fig.show()
+```
+

@@ -17,7 +17,8 @@ vapor/
 │  ├─ add_date.py           # Functions to add dates to raw filenames
 │  ├─ create_map.py         # Functions to create the euromed map
 │  ├─ create_plots.py       # Functions to load CSVs and generate interactive/static plots
-│  ├─ create_report.py      # Functions to create the report
+│  ├─ create_report_html.py      # Functions to create the report in html format
+│  ├─ create_report_pdf.py      # Functions to create the report in pdf format
 │  ├─ create_sankey.py      # Functions to create the sankey diagram
 │  ├─ create_tkinter.py     # Functions to create the euromed map (updated version)
 │  ├─ excel2csv.py          # Functions to load CSVs and generate interactive/static plots
