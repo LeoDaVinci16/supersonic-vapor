@@ -1,885 +1,191 @@
 ---
-title: "Automated Measurement Report (PDF)"
+title: "Informe dels cabals (PDF)"
 author: Arnau Coronado Nadal
 execute:
   cache: true
-  cache-dir: _quarto_cache
+  cache-dir: _quarto_cache_pdf
 format:
   pdf:
-    css: print.css
     toc: true
 ---
 
-## E800
+## Punt de mesura STE-01
 
-Plots for measurement point E800:
+Gràfiques de les mesures fetes en el punt STE-01:
 
-### 20251204_141433_STE-01_E800.csv (2025-12-04)
+### 20251204_141433_STE-01.csv (2025-12-04)
 
-```{python}
-from create_plots import load_csv, create_plotly_plot
-from IPython.display import Image, display
-import plotly.io as pio
-import os
+![](outputs/plots/20251204_141433_STE-01.csv_A_Flow_velocity_m-s.png){ width=80% }
 
-csv_path = r"data/raw\20251204_141433_STE-01_E800.csv"
-variable = "A Flow velocity [m/s]"
-output_folder = r"outputs"
+### 20251205_044520_STE-01.csv (2025-12-05)
 
-df = load_csv(csv_path)
-fig = create_plotly_plot(df, variable, csv_path)
+![](outputs/plots/20251205_044520_STE-01.csv_A_Flow_velocity_m-s.png){ width=80% }
 
-# Export static PNG for PDF
-os.makedirs(output_folder, exist_ok=True)
-png_path = os.path.join(output_folder, os.path.basename(csv_path).replace(".csv", ".png"))
-try:
-    pio.kaleido.scope.default_format = "png"
-    fig.write_image(png_path, width=900, height=450, scale=2)
-    display(Image(filename=png_path))
-except Exception as e:
-    print("Could not export figure. Make sure 'kaleido' is installed.")
-    print(e)
-```
+## Punt de mesura STE-02
 
-### 20251205_044520_STE-01_E800.csv (2025-12-05)
-
-```{python}
-from create_plots import load_csv, create_plotly_plot
-from IPython.display import Image, display
-import plotly.io as pio
-import os
-
-csv_path = r"data/raw\20251205_044520_STE-01_E800.csv"
-variable = "A Flow velocity [m/s]"
-output_folder = r"outputs"
-
-df = load_csv(csv_path)
-fig = create_plotly_plot(df, variable, csv_path)
-
-# Export static PNG for PDF
-os.makedirs(output_folder, exist_ok=True)
-png_path = os.path.join(output_folder, os.path.basename(csv_path).replace(".csv", ".png"))
-try:
-    pio.kaleido.scope.default_format = "png"
-    fig.write_image(png_path, width=900, height=450, scale=2)
-    display(Image(filename=png_path))
-except Exception as e:
-    print("Could not export figure. Make sure 'kaleido' is installed.")
-    print(e)
-```
-
-## PEC
-
-Plots for measurement point PEC:
-
-### 20251201_155248_STE-03_PEC.csv (2025-12-01)
-
-```{python}
-from create_plots import load_csv, create_plotly_plot
-from IPython.display import Image, display
-import plotly.io as pio
-import os
-
-csv_path = r"data/raw\20251201_155248_STE-03_PEC.csv"
-variable = "A Flow velocity [m/s]"
-output_folder = r"outputs"
-
-df = load_csv(csv_path)
-fig = create_plotly_plot(df, variable, csv_path)
-
-# Export static PNG for PDF
-os.makedirs(output_folder, exist_ok=True)
-png_path = os.path.join(output_folder, os.path.basename(csv_path).replace(".csv", ".png"))
-try:
-    pio.kaleido.scope.default_format = "png"
-    fig.write_image(png_path, width=900, height=450, scale=2)
-    display(Image(filename=png_path))
-except Exception as e:
-    print("Could not export figure. Make sure 'kaleido' is installed.")
-    print(e)
-```
-
-## STE-02
-
-Plots for measurement point STE-02:
+Gràfiques de les mesures fetes en el punt STE-02:
 
 ### 20251104_103620_STE-02.csv (2025-11-04)
 
-```{python}
-from create_plots import load_csv, create_plotly_plot
-from IPython.display import Image, display
-import plotly.io as pio
-import os
-
-csv_path = r"data/raw\20251104_103620_STE-02.csv"
-variable = "A Flow velocity [m/s]"
-output_folder = r"outputs"
-
-df = load_csv(csv_path)
-fig = create_plotly_plot(df, variable, csv_path)
-
-# Export static PNG for PDF
-os.makedirs(output_folder, exist_ok=True)
-png_path = os.path.join(output_folder, os.path.basename(csv_path).replace(".csv", ".png"))
-try:
-    pio.kaleido.scope.default_format = "png"
-    fig.write_image(png_path, width=900, height=450, scale=2)
-    display(Image(filename=png_path))
-except Exception as e:
-    print("Could not export figure. Make sure 'kaleido' is installed.")
-    print(e)
-```
+![](outputs/plots/20251104_103620_STE-02.csv_A_Flow_velocity_m-s.png){ width=80% }
 
 ### 20251114_112101_STE-02.csv (2025-11-14)
 
-```{python}
-from create_plots import load_csv, create_plotly_plot
-from IPython.display import Image, display
-import plotly.io as pio
-import os
-
-csv_path = r"data/raw\20251114_112101_STE-02.csv"
-variable = "A Flow velocity [m/s]"
-output_folder = r"outputs"
-
-df = load_csv(csv_path)
-fig = create_plotly_plot(df, variable, csv_path)
-
-# Export static PNG for PDF
-os.makedirs(output_folder, exist_ok=True)
-png_path = os.path.join(output_folder, os.path.basename(csv_path).replace(".csv", ".png"))
-try:
-    pio.kaleido.scope.default_format = "png"
-    fig.write_image(png_path, width=900, height=450, scale=2)
-    display(Image(filename=png_path))
-except Exception as e:
-    print("Could not export figure. Make sure 'kaleido' is installed.")
-    print(e)
-```
+![](outputs/plots/20251114_112101_STE-02.csv_A_Flow_velocity_m-s.png){ width=80% }
 
 ### 20251117_092425_STE-02.csv (2025-11-17)
 
-```{python}
-from create_plots import load_csv, create_plotly_plot
-from IPython.display import Image, display
-import plotly.io as pio
-import os
+![](outputs/plots/20251117_092425_STE-02.csv_A_Flow_velocity_m-s.png){ width=80% }
 
-csv_path = r"data/raw\20251117_092425_STE-02.csv"
-variable = "A Flow velocity [m/s]"
-output_folder = r"outputs"
+## Punt de mesura STE-03
 
-df = load_csv(csv_path)
-fig = create_plotly_plot(df, variable, csv_path)
-
-# Export static PNG for PDF
-os.makedirs(output_folder, exist_ok=True)
-png_path = os.path.join(output_folder, os.path.basename(csv_path).replace(".csv", ".png"))
-try:
-    pio.kaleido.scope.default_format = "png"
-    fig.write_image(png_path, width=900, height=450, scale=2)
-    display(Image(filename=png_path))
-except Exception as e:
-    print("Could not export figure. Make sure 'kaleido' is installed.")
-    print(e)
-```
-
-## STE-03
-
-Plots for measurement point STE-03:
+Gràfiques de les mesures fetes en el punt STE-03:
 
 ### 20251027_143957_STE-03.csv (2025-10-27)
 
-```{python}
-from create_plots import load_csv, create_plotly_plot
-from IPython.display import Image, display
-import plotly.io as pio
-import os
-
-csv_path = r"data/raw\20251027_143957_STE-03.csv"
-variable = "A Flow velocity [m/s]"
-output_folder = r"outputs"
-
-df = load_csv(csv_path)
-fig = create_plotly_plot(df, variable, csv_path)
-
-# Export static PNG for PDF
-os.makedirs(output_folder, exist_ok=True)
-png_path = os.path.join(output_folder, os.path.basename(csv_path).replace(".csv", ".png"))
-try:
-    pio.kaleido.scope.default_format = "png"
-    fig.write_image(png_path, width=900, height=450, scale=2)
-    display(Image(filename=png_path))
-except Exception as e:
-    print("Could not export figure. Make sure 'kaleido' is installed.")
-    print(e)
-```
+![](outputs/plots/20251027_143957_STE-03.csv_A_Flow_velocity_m-s.png){ width=80% }
 
 ### 20251028_110853_STE-03.csv (2025-10-28)
 
-```{python}
-from create_plots import load_csv, create_plotly_plot
-from IPython.display import Image, display
-import plotly.io as pio
-import os
-
-csv_path = r"data/raw\20251028_110853_STE-03.csv"
-variable = "A Flow velocity [m/s]"
-output_folder = r"outputs"
-
-df = load_csv(csv_path)
-fig = create_plotly_plot(df, variable, csv_path)
-
-# Export static PNG for PDF
-os.makedirs(output_folder, exist_ok=True)
-png_path = os.path.join(output_folder, os.path.basename(csv_path).replace(".csv", ".png"))
-try:
-    pio.kaleido.scope.default_format = "png"
-    fig.write_image(png_path, width=900, height=450, scale=2)
-    display(Image(filename=png_path))
-except Exception as e:
-    print("Could not export figure. Make sure 'kaleido' is installed.")
-    print(e)
-```
+![](outputs/plots/20251028_110853_STE-03.csv_A_Flow_velocity_m-s.png){ width=80% }
 
 ### 20251103_125239_STE-03.csv (2025-11-03)
 
-```{python}
-from create_plots import load_csv, create_plotly_plot
-from IPython.display import Image, display
-import plotly.io as pio
-import os
-
-csv_path = r"data/raw\20251103_125239_STE-03.csv"
-variable = "A Flow velocity [m/s]"
-output_folder = r"outputs"
-
-df = load_csv(csv_path)
-fig = create_plotly_plot(df, variable, csv_path)
-
-# Export static PNG for PDF
-os.makedirs(output_folder, exist_ok=True)
-png_path = os.path.join(output_folder, os.path.basename(csv_path).replace(".csv", ".png"))
-try:
-    pio.kaleido.scope.default_format = "png"
-    fig.write_image(png_path, width=900, height=450, scale=2)
-    display(Image(filename=png_path))
-except Exception as e:
-    print("Could not export figure. Make sure 'kaleido' is installed.")
-    print(e)
-```
+![](outputs/plots/20251103_125239_STE-03.csv_A_Flow_velocity_m-s.png){ width=80% }
 
 ### 20251110_095343_STE-03.csv (2025-11-10)
 
-```{python}
-from create_plots import load_csv, create_plotly_plot
-from IPython.display import Image, display
-import plotly.io as pio
-import os
-
-csv_path = r"data/raw\20251110_095343_STE-03.csv"
-variable = "A Flow velocity [m/s]"
-output_folder = r"outputs"
-
-df = load_csv(csv_path)
-fig = create_plotly_plot(df, variable, csv_path)
-
-# Export static PNG for PDF
-os.makedirs(output_folder, exist_ok=True)
-png_path = os.path.join(output_folder, os.path.basename(csv_path).replace(".csv", ".png"))
-try:
-    pio.kaleido.scope.default_format = "png"
-    fig.write_image(png_path, width=900, height=450, scale=2)
-    display(Image(filename=png_path))
-except Exception as e:
-    print("Could not export figure. Make sure 'kaleido' is installed.")
-    print(e)
-```
+![](outputs/plots/20251110_095343_STE-03.csv_A_Flow_velocity_m-s.png){ width=80% }
 
 ### 20251111_110949_STE-03.csv (2025-11-11)
 
-```{python}
-from create_plots import load_csv, create_plotly_plot
-from IPython.display import Image, display
-import plotly.io as pio
-import os
-
-csv_path = r"data/raw\20251111_110949_STE-03.csv"
-variable = "A Flow velocity [m/s]"
-output_folder = r"outputs"
-
-df = load_csv(csv_path)
-fig = create_plotly_plot(df, variable, csv_path)
-
-# Export static PNG for PDF
-os.makedirs(output_folder, exist_ok=True)
-png_path = os.path.join(output_folder, os.path.basename(csv_path).replace(".csv", ".png"))
-try:
-    pio.kaleido.scope.default_format = "png"
-    fig.write_image(png_path, width=900, height=450, scale=2)
-    display(Image(filename=png_path))
-except Exception as e:
-    print("Could not export figure. Make sure 'kaleido' is installed.")
-    print(e)
-```
+![](outputs/plots/20251111_110949_STE-03.csv_A_Flow_velocity_m-s.png){ width=80% }
 
 ### 20251112_114717_STE-03.csv (2025-11-12)
 
-```{python}
-from create_plots import load_csv, create_plotly_plot
-from IPython.display import Image, display
-import plotly.io as pio
-import os
-
-csv_path = r"data/raw\20251112_114717_STE-03.csv"
-variable = "A Flow velocity [m/s]"
-output_folder = r"outputs"
-
-df = load_csv(csv_path)
-fig = create_plotly_plot(df, variable, csv_path)
-
-# Export static PNG for PDF
-os.makedirs(output_folder, exist_ok=True)
-png_path = os.path.join(output_folder, os.path.basename(csv_path).replace(".csv", ".png"))
-try:
-    pio.kaleido.scope.default_format = "png"
-    fig.write_image(png_path, width=900, height=450, scale=2)
-    display(Image(filename=png_path))
-except Exception as e:
-    print("Could not export figure. Make sure 'kaleido' is installed.")
-    print(e)
-```
+![](outputs/plots/20251112_114717_STE-03.csv_A_Flow_velocity_m-s.png){ width=80% }
 
 ### 20251112_122634_STE-03.csv (2025-11-12)
 
-```{python}
-from create_plots import load_csv, create_plotly_plot
-from IPython.display import Image, display
-import plotly.io as pio
-import os
-
-csv_path = r"data/raw\20251112_122634_STE-03.csv"
-variable = "A Flow velocity [m/s]"
-output_folder = r"outputs"
-
-df = load_csv(csv_path)
-fig = create_plotly_plot(df, variable, csv_path)
-
-# Export static PNG for PDF
-os.makedirs(output_folder, exist_ok=True)
-png_path = os.path.join(output_folder, os.path.basename(csv_path).replace(".csv", ".png"))
-try:
-    pio.kaleido.scope.default_format = "png"
-    fig.write_image(png_path, width=900, height=450, scale=2)
-    display(Image(filename=png_path))
-except Exception as e:
-    print("Could not export figure. Make sure 'kaleido' is installed.")
-    print(e)
-```
+![](outputs/plots/20251112_122634_STE-03.csv_A_Flow_velocity_m-s.png){ width=80% }
 
 ### 20251122_003137_STE-03.csv (2025-11-22)
 
-```{python}
-from create_plots import load_csv, create_plotly_plot
-from IPython.display import Image, display
-import plotly.io as pio
-import os
-
-csv_path = r"data/raw\20251122_003137_STE-03.csv"
-variable = "A Flow velocity [m/s]"
-output_folder = r"outputs"
-
-df = load_csv(csv_path)
-fig = create_plotly_plot(df, variable, csv_path)
-
-# Export static PNG for PDF
-os.makedirs(output_folder, exist_ok=True)
-png_path = os.path.join(output_folder, os.path.basename(csv_path).replace(".csv", ".png"))
-try:
-    pio.kaleido.scope.default_format = "png"
-    fig.write_image(png_path, width=900, height=450, scale=2)
-    display(Image(filename=png_path))
-except Exception as e:
-    print("Could not export figure. Make sure 'kaleido' is installed.")
-    print(e)
-```
+![](outputs/plots/20251122_003137_STE-03.csv_A_Flow_velocity_m-s.png){ width=80% }
 
 ### 20251126_141746_STE-03.csv (2025-11-26)
 
-```{python}
-from create_plots import load_csv, create_plotly_plot
-from IPython.display import Image, display
-import plotly.io as pio
-import os
-
-csv_path = r"data/raw\20251126_141746_STE-03.csv"
-variable = "A Flow velocity [m/s]"
-output_folder = r"outputs"
-
-df = load_csv(csv_path)
-fig = create_plotly_plot(df, variable, csv_path)
-
-# Export static PNG for PDF
-os.makedirs(output_folder, exist_ok=True)
-png_path = os.path.join(output_folder, os.path.basename(csv_path).replace(".csv", ".png"))
-try:
-    pio.kaleido.scope.default_format = "png"
-    fig.write_image(png_path, width=900, height=450, scale=2)
-    display(Image(filename=png_path))
-except Exception as e:
-    print("Could not export figure. Make sure 'kaleido' is installed.")
-    print(e)
-```
+![](outputs/plots/20251126_141746_STE-03.csv_A_Flow_velocity_m-s.png){ width=80% }
 
 ### 20251127_132919_STE-03.csv (2025-11-27)
 
-```{python}
-from create_plots import load_csv, create_plotly_plot
-from IPython.display import Image, display
-import plotly.io as pio
-import os
-
-csv_path = r"data/raw\20251127_132919_STE-03.csv"
-variable = "A Flow velocity [m/s]"
-output_folder = r"outputs"
-
-df = load_csv(csv_path)
-fig = create_plotly_plot(df, variable, csv_path)
-
-# Export static PNG for PDF
-os.makedirs(output_folder, exist_ok=True)
-png_path = os.path.join(output_folder, os.path.basename(csv_path).replace(".csv", ".png"))
-try:
-    pio.kaleido.scope.default_format = "png"
-    fig.write_image(png_path, width=900, height=450, scale=2)
-    display(Image(filename=png_path))
-except Exception as e:
-    print("Could not export figure. Make sure 'kaleido' is installed.")
-    print(e)
-```
+![](outputs/plots/20251127_132919_STE-03.csv_A_Flow_velocity_m-s.png){ width=80% }
 
 ### 20251127_133004_STE-03.csv (2025-11-27)
 
-```{python}
-from create_plots import load_csv, create_plotly_plot
-from IPython.display import Image, display
-import plotly.io as pio
-import os
+![](outputs/plots/20251127_133004_STE-03.csv_A_Flow_velocity_m-s.png){ width=80% }
 
-csv_path = r"data/raw\20251127_133004_STE-03.csv"
-variable = "A Flow velocity [m/s]"
-output_folder = r"outputs"
+### 20251201_155248_STE-03.csv (2025-12-01)
 
-df = load_csv(csv_path)
-fig = create_plotly_plot(df, variable, csv_path)
-
-# Export static PNG for PDF
-os.makedirs(output_folder, exist_ok=True)
-png_path = os.path.join(output_folder, os.path.basename(csv_path).replace(".csv", ".png"))
-try:
-    pio.kaleido.scope.default_format = "png"
-    fig.write_image(png_path, width=900, height=450, scale=2)
-    display(Image(filename=png_path))
-except Exception as e:
-    print("Could not export figure. Make sure 'kaleido' is installed.")
-    print(e)
-```
+![](outputs/plots/20251201_155248_STE-03.csv_A_Flow_velocity_m-s.png){ width=80% }
 
 ### 20260205_131455_STE-03.csv (2026-02-05)
 
-```{python}
-from create_plots import load_csv, create_plotly_plot
-from IPython.display import Image, display
-import plotly.io as pio
-import os
+![](outputs/plots/20260205_131455_STE-03.csv_A_Flow_velocity_m-s.png){ width=80% }
 
-csv_path = r"data/raw\20260205_131455_STE-03.csv"
-variable = "A Flow velocity [m/s]"
-output_folder = r"outputs"
+## Punt de mesura STE-04
 
-df = load_csv(csv_path)
-fig = create_plotly_plot(df, variable, csv_path)
-
-# Export static PNG for PDF
-os.makedirs(output_folder, exist_ok=True)
-png_path = os.path.join(output_folder, os.path.basename(csv_path).replace(".csv", ".png"))
-try:
-    pio.kaleido.scope.default_format = "png"
-    fig.write_image(png_path, width=900, height=450, scale=2)
-    display(Image(filename=png_path))
-except Exception as e:
-    print("Could not export figure. Make sure 'kaleido' is installed.")
-    print(e)
-```
-
-## STE-04
-
-Plots for measurement point STE-04:
+Gràfiques de les mesures fetes en el punt STE-04:
 
 ### 20251007_100341_STE-04.csv (2025-10-07)
 
-```{python}
-from create_plots import load_csv, create_plotly_plot
-from IPython.display import Image, display
-import plotly.io as pio
-import os
-
-csv_path = r"data/raw\20251007_100341_STE-04.csv"
-variable = "A Flow velocity [m/s]"
-output_folder = r"outputs"
-
-df = load_csv(csv_path)
-fig = create_plotly_plot(df, variable, csv_path)
-
-# Export static PNG for PDF
-os.makedirs(output_folder, exist_ok=True)
-png_path = os.path.join(output_folder, os.path.basename(csv_path).replace(".csv", ".png"))
-try:
-    pio.kaleido.scope.default_format = "png"
-    fig.write_image(png_path, width=900, height=450, scale=2)
-    display(Image(filename=png_path))
-except Exception as e:
-    print("Could not export figure. Make sure 'kaleido' is installed.")
-    print(e)
-```
+![](outputs/plots/20251007_100341_STE-04.csv_A_Flow_velocity_m-s.png){ width=80% }
 
 ### 20251008_095114_STE-04.csv (2025-10-08)
 
-```{python}
-from create_plots import load_csv, create_plotly_plot
-from IPython.display import Image, display
-import plotly.io as pio
-import os
-
-csv_path = r"data/raw\20251008_095114_STE-04.csv"
-variable = "A Flow velocity [m/s]"
-output_folder = r"outputs"
-
-df = load_csv(csv_path)
-fig = create_plotly_plot(df, variable, csv_path)
-
-# Export static PNG for PDF
-os.makedirs(output_folder, exist_ok=True)
-png_path = os.path.join(output_folder, os.path.basename(csv_path).replace(".csv", ".png"))
-try:
-    pio.kaleido.scope.default_format = "png"
-    fig.write_image(png_path, width=900, height=450, scale=2)
-    display(Image(filename=png_path))
-except Exception as e:
-    print("Could not export figure. Make sure 'kaleido' is installed.")
-    print(e)
-```
+![](outputs/plots/20251008_095114_STE-04.csv_A_Flow_velocity_m-s.png){ width=80% }
 
 ### 20251008_115126_STE-04.csv (2025-10-08)
 
-```{python}
-from create_plots import load_csv, create_plotly_plot
-from IPython.display import Image, display
-import plotly.io as pio
-import os
-
-csv_path = r"data/raw\20251008_115126_STE-04.csv"
-variable = "A Flow velocity [m/s]"
-output_folder = r"outputs"
-
-df = load_csv(csv_path)
-fig = create_plotly_plot(df, variable, csv_path)
-
-# Export static PNG for PDF
-os.makedirs(output_folder, exist_ok=True)
-png_path = os.path.join(output_folder, os.path.basename(csv_path).replace(".csv", ".png"))
-try:
-    pio.kaleido.scope.default_format = "png"
-    fig.write_image(png_path, width=900, height=450, scale=2)
-    display(Image(filename=png_path))
-except Exception as e:
-    print("Could not export figure. Make sure 'kaleido' is installed.")
-    print(e)
-```
+![](outputs/plots/20251008_115126_STE-04.csv_A_Flow_velocity_m-s.png){ width=80% }
 
 ### 20251112_130310_STE-04.csv (2025-11-12)
 
-```{python}
-from create_plots import load_csv, create_plotly_plot
-from IPython.display import Image, display
-import plotly.io as pio
-import os
+![](outputs/plots/20251112_130310_STE-04.csv_A_Flow_velocity_m-s.png){ width=80% }
 
-csv_path = r"data/raw\20251112_130310_STE-04.csv"
-variable = "A Flow velocity [m/s]"
-output_folder = r"outputs"
+## Punt de mesura STE-05
 
-df = load_csv(csv_path)
-fig = create_plotly_plot(df, variable, csv_path)
+Gràfiques de les mesures fetes en el punt STE-05:
 
-# Export static PNG for PDF
-os.makedirs(output_folder, exist_ok=True)
-png_path = os.path.join(output_folder, os.path.basename(csv_path).replace(".csv", ".png"))
-try:
-    pio.kaleido.scope.default_format = "png"
-    fig.write_image(png_path, width=900, height=450, scale=2)
-    display(Image(filename=png_path))
-except Exception as e:
-    print("Could not export figure. Make sure 'kaleido' is installed.")
-    print(e)
-```
+### 20260316_085832_STE-05.csv (2026-03-16)
 
-## STE-07
+![](outputs/plots/20260316_085832_STE-05.csv_A_Flow_velocity_m-s.png){ width=80% }
 
-Plots for measurement point STE-07:
+### 20260316_134917_STE-05.csv (2026-03-16)
+
+![](outputs/plots/20260316_134917_STE-05.csv_A_Flow_velocity_m-s.png){ width=80% }
+
+## Punt de mesura STE-07
+
+Gràfiques de les mesures fetes en el punt STE-07:
 
 ### 20260219_112332_STE-07.csv (2026-02-19)
 
-```{python}
-from create_plots import load_csv, create_plotly_plot
-from IPython.display import Image, display
-import plotly.io as pio
-import os
-
-csv_path = r"data/raw\20260219_112332_STE-07.csv"
-variable = "A Flow velocity [m/s]"
-output_folder = r"outputs"
-
-df = load_csv(csv_path)
-fig = create_plotly_plot(df, variable, csv_path)
-
-# Export static PNG for PDF
-os.makedirs(output_folder, exist_ok=True)
-png_path = os.path.join(output_folder, os.path.basename(csv_path).replace(".csv", ".png"))
-try:
-    pio.kaleido.scope.default_format = "png"
-    fig.write_image(png_path, width=900, height=450, scale=2)
-    display(Image(filename=png_path))
-except Exception as e:
-    print("Could not export figure. Make sure 'kaleido' is installed.")
-    print(e)
-```
+![](outputs/plots/20260219_112332_STE-07.csv_A_Flow_velocity_m-s.png){ width=80% }
 
 ### 20260219_144829_STE-07.csv (2026-02-19)
 
-```{python}
-from create_plots import load_csv, create_plotly_plot
-from IPython.display import Image, display
-import plotly.io as pio
-import os
-
-csv_path = r"data/raw\20260219_144829_STE-07.csv"
-variable = "A Flow velocity [m/s]"
-output_folder = r"outputs"
-
-df = load_csv(csv_path)
-fig = create_plotly_plot(df, variable, csv_path)
-
-# Export static PNG for PDF
-os.makedirs(output_folder, exist_ok=True)
-png_path = os.path.join(output_folder, os.path.basename(csv_path).replace(".csv", ".png"))
-try:
-    pio.kaleido.scope.default_format = "png"
-    fig.write_image(png_path, width=900, height=450, scale=2)
-    display(Image(filename=png_path))
-except Exception as e:
-    print("Could not export figure. Make sure 'kaleido' is installed.")
-    print(e)
-```
+![](outputs/plots/20260219_144829_STE-07.csv_A_Flow_velocity_m-s.png){ width=80% }
 
 ### 20260223_075303_STE-07.csv (2026-02-23)
 
-```{python}
-from create_plots import load_csv, create_plotly_plot
-from IPython.display import Image, display
-import plotly.io as pio
-import os
-
-csv_path = r"data/raw\20260223_075303_STE-07.csv"
-variable = "A Flow velocity [m/s]"
-output_folder = r"outputs"
-
-df = load_csv(csv_path)
-fig = create_plotly_plot(df, variable, csv_path)
-
-# Export static PNG for PDF
-os.makedirs(output_folder, exist_ok=True)
-png_path = os.path.join(output_folder, os.path.basename(csv_path).replace(".csv", ".png"))
-try:
-    pio.kaleido.scope.default_format = "png"
-    fig.write_image(png_path, width=900, height=450, scale=2)
-    display(Image(filename=png_path))
-except Exception as e:
-    print("Could not export figure. Make sure 'kaleido' is installed.")
-    print(e)
-```
+![](outputs/plots/20260223_075303_STE-07.csv_A_Flow_velocity_m-s.png){ width=80% }
 
 ### 20260224_134917_STE-07.csv (2026-02-24)
 
-```{python}
-from create_plots import load_csv, create_plotly_plot
-from IPython.display import Image, display
-import plotly.io as pio
-import os
+![](outputs/plots/20260224_134917_STE-07.csv_A_Flow_velocity_m-s.png){ width=80% }
 
-csv_path = r"data/raw\20260224_134917_STE-07.csv"
-variable = "A Flow velocity [m/s]"
-output_folder = r"outputs"
+### 20260225_140608_STE-07.csv (2026-02-25)
 
-df = load_csv(csv_path)
-fig = create_plotly_plot(df, variable, csv_path)
+![](outputs/plots/20260225_140608_STE-07.csv_A_Flow_velocity_m-s.png){ width=80% }
 
-# Export static PNG for PDF
-os.makedirs(output_folder, exist_ok=True)
-png_path = os.path.join(output_folder, os.path.basename(csv_path).replace(".csv", ".png"))
-try:
-    pio.kaleido.scope.default_format = "png"
-    fig.write_image(png_path, width=900, height=450, scale=2)
-    display(Image(filename=png_path))
-except Exception as e:
-    print("Could not export figure. Make sure 'kaleido' is installed.")
-    print(e)
-```
+## Punt de mesura STE-08
 
-## STE-08
-
-Plots for measurement point STE-08:
+Gràfiques de les mesures fetes en el punt STE-08:
 
 ### 20251118_024904_STE-08.csv (2025-11-18)
 
-```{python}
-from create_plots import load_csv, create_plotly_plot
-from IPython.display import Image, display
-import plotly.io as pio
-import os
+![](outputs/plots/20251118_024904_STE-08.csv_A_Flow_velocity_m-s.png){ width=80% }
 
-csv_path = r"data/raw\20251118_024904_STE-08.csv"
-variable = "A Flow velocity [m/s]"
-output_folder = r"outputs"
+### 20260309_103006_STE-08.csv (2026-03-09)
 
-df = load_csv(csv_path)
-fig = create_plotly_plot(df, variable, csv_path)
+![](outputs/plots/20260309_103006_STE-08.csv_A_Flow_velocity_m-s.png){ width=80% }
 
-# Export static PNG for PDF
-os.makedirs(output_folder, exist_ok=True)
-png_path = os.path.join(output_folder, os.path.basename(csv_path).replace(".csv", ".png"))
-try:
-    pio.kaleido.scope.default_format = "png"
-    fig.write_image(png_path, width=900, height=450, scale=2)
-    display(Image(filename=png_path))
-except Exception as e:
-    print("Could not export figure. Make sure 'kaleido' is installed.")
-    print(e)
-```
+### 20260309_133323_STE-08.csv (2026-03-09)
 
-## STE-10
+![](outputs/plots/20260309_133323_STE-08.csv_A_Flow_velocity_m-s.png){ width=80% }
 
-Plots for measurement point STE-10:
+## Punt de mesura STE-10
+
+Gràfiques de les mesures fetes en el punt STE-10:
 
 ### 20251119_112337_STE-10.csv (2025-11-19)
 
-```{python}
-from create_plots import load_csv, create_plotly_plot
-from IPython.display import Image, display
-import plotly.io as pio
-import os
-
-csv_path = r"data/raw\20251119_112337_STE-10.csv"
-variable = "A Flow velocity [m/s]"
-output_folder = r"outputs"
-
-df = load_csv(csv_path)
-fig = create_plotly_plot(df, variable, csv_path)
-
-# Export static PNG for PDF
-os.makedirs(output_folder, exist_ok=True)
-png_path = os.path.join(output_folder, os.path.basename(csv_path).replace(".csv", ".png"))
-try:
-    pio.kaleido.scope.default_format = "png"
-    fig.write_image(png_path, width=900, height=450, scale=2)
-    display(Image(filename=png_path))
-except Exception as e:
-    print("Could not export figure. Make sure 'kaleido' is installed.")
-    print(e)
-```
+![](outputs/plots/20251119_112337_STE-10.csv_A_Flow_velocity_m-s.png){ width=80% }
 
 ### 20251120_092331_STE-10.csv (2025-11-20)
 
-```{python}
-from create_plots import load_csv, create_plotly_plot
-from IPython.display import Image, display
-import plotly.io as pio
-import os
-
-csv_path = r"data/raw\20251120_092331_STE-10.csv"
-variable = "A Flow velocity [m/s]"
-output_folder = r"outputs"
-
-df = load_csv(csv_path)
-fig = create_plotly_plot(df, variable, csv_path)
-
-# Export static PNG for PDF
-os.makedirs(output_folder, exist_ok=True)
-png_path = os.path.join(output_folder, os.path.basename(csv_path).replace(".csv", ".png"))
-try:
-    pio.kaleido.scope.default_format = "png"
-    fig.write_image(png_path, width=900, height=450, scale=2)
-    display(Image(filename=png_path))
-except Exception as e:
-    print("Could not export figure. Make sure 'kaleido' is installed.")
-    print(e)
-```
+![](outputs/plots/20251120_092331_STE-10.csv_A_Flow_velocity_m-s.png){ width=80% }
 
 ### 20251120_093239_STE-10.csv (2025-11-20)
 
-```{python}
-from create_plots import load_csv, create_plotly_plot
-from IPython.display import Image, display
-import plotly.io as pio
-import os
+![](outputs/plots/20251120_093239_STE-10.csv_A_Flow_velocity_m-s.png){ width=80% }
 
-csv_path = r"data/raw\20251120_093239_STE-10.csv"
-variable = "A Flow velocity [m/s]"
-output_folder = r"outputs"
+## Punt de mesura STE-11
 
-df = load_csv(csv_path)
-fig = create_plotly_plot(df, variable, csv_path)
-
-# Export static PNG for PDF
-os.makedirs(output_folder, exist_ok=True)
-png_path = os.path.join(output_folder, os.path.basename(csv_path).replace(".csv", ".png"))
-try:
-    pio.kaleido.scope.default_format = "png"
-    fig.write_image(png_path, width=900, height=450, scale=2)
-    display(Image(filename=png_path))
-except Exception as e:
-    print("Could not export figure. Make sure 'kaleido' is installed.")
-    print(e)
-```
-
-## STE-11
-
-Plots for measurement point STE-11:
+Gràfiques de les mesures fetes en el punt STE-11:
 
 ### 20251121_025609_STE-11.csv (2025-11-21)
 
-```{python}
-from create_plots import load_csv, create_plotly_plot
-from IPython.display import Image, display
-import plotly.io as pio
-import os
-
-csv_path = r"data/raw\20251121_025609_STE-11.csv"
-variable = "A Flow velocity [m/s]"
-output_folder = r"outputs"
-
-df = load_csv(csv_path)
-fig = create_plotly_plot(df, variable, csv_path)
-
-# Export static PNG for PDF
-os.makedirs(output_folder, exist_ok=True)
-png_path = os.path.join(output_folder, os.path.basename(csv_path).replace(".csv", ".png"))
-try:
-    pio.kaleido.scope.default_format = "png"
-    fig.write_image(png_path, width=900, height=450, scale=2)
-    display(Image(filename=png_path))
-except Exception as e:
-    print("Could not export figure. Make sure 'kaleido' is installed.")
-    print(e)
-```
+![](outputs/plots/20251121_025609_STE-11.csv_A_Flow_velocity_m-s.png){ width=80% }
 
