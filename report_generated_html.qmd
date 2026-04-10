@@ -1,5 +1,5 @@
 ---
-title: "Automated Measurement Report (HTML)"
+title: "Informe dels cabals (HTML)"
 author: Arnau Coronado Nadal
 execute:
   cache: true
@@ -10,11 +10,11 @@ format:
     code-fold: true
 ---
 
-## E800
+## Punt de mesura STE-01
 
-Plots for measurement point E800:
+Gràfiques de les mesures fetes en el punt STE-01:
 
-### 20251204_141433_STE-01_E800.csv (2025-12-04)
+### 20251204_141433_STE-01.csv (2025-12-04)
 
 ```{python}
 import sys, os
@@ -22,7 +22,7 @@ sys.path.append(os.path.abspath("src"))
 from create_plots import load_csv, create_plotly_plot
 import plotly.io as pio
 
-csv_path = r"data/raw\20251204_141433_STE-01_E800.csv"
+csv_path = r"data/raw\20251204_141433_STE-01.csv"
 variable = "A Flow velocity [m/s]"
 
 df = load_csv(csv_path)
@@ -33,7 +33,7 @@ pio.renderers.default = "notebook_connected"
 fig.show()
 ```
 
-### 20251205_044520_STE-01_E800.csv (2025-12-05)
+### 20251205_044520_STE-01.csv (2025-12-05)
 
 ```{python}
 import sys, os
@@ -41,7 +41,7 @@ sys.path.append(os.path.abspath("src"))
 from create_plots import load_csv, create_plotly_plot
 import plotly.io as pio
 
-csv_path = r"data/raw\20251205_044520_STE-01_E800.csv"
+csv_path = r"data/raw\20251205_044520_STE-01.csv"
 variable = "A Flow velocity [m/s]"
 
 df = load_csv(csv_path)
@@ -52,32 +52,9 @@ pio.renderers.default = "notebook_connected"
 fig.show()
 ```
 
-## PEC
+## Punt de mesura STE-02
 
-Plots for measurement point PEC:
-
-### 20251201_155248_STE-03_PEC.csv (2025-12-01)
-
-```{python}
-import sys, os
-sys.path.append(os.path.abspath("src"))
-from create_plots import load_csv, create_plotly_plot
-import plotly.io as pio
-
-csv_path = r"data/raw\20251201_155248_STE-03_PEC.csv"
-variable = "A Flow velocity [m/s]"
-
-df = load_csv(csv_path)
-fig = create_plotly_plot(df, variable, csv_path)
-
-# Show interactive plot in HTML
-pio.renderers.default = "notebook_connected"
-fig.show()
-```
-
-## STE-02
-
-Plots for measurement point STE-02:
+Gràfiques de les mesures fetes en el punt STE-02:
 
 ### 20251104_103620_STE-02.csv (2025-11-04)
 
@@ -136,9 +113,9 @@ pio.renderers.default = "notebook_connected"
 fig.show()
 ```
 
-## STE-03
+## Punt de mesura STE-03
 
-Plots for measurement point STE-03:
+Gràfiques de les mesures fetes en el punt STE-03:
 
 ### 20251027_143957_STE-03.csv (2025-10-27)
 
@@ -349,6 +326,25 @@ pio.renderers.default = "notebook_connected"
 fig.show()
 ```
 
+### 20251201_155248_STE-03.csv (2025-12-01)
+
+```{python}
+import sys, os
+sys.path.append(os.path.abspath("src"))
+from create_plots import load_csv, create_plotly_plot
+import plotly.io as pio
+
+csv_path = r"data/raw\20251201_155248_STE-03.csv"
+variable = "A Flow velocity [m/s]"
+
+df = load_csv(csv_path)
+fig = create_plotly_plot(df, variable, csv_path)
+
+# Show interactive plot in HTML
+pio.renderers.default = "notebook_connected"
+fig.show()
+```
+
 ### 20260205_131455_STE-03.csv (2026-02-05)
 
 ```{python}
@@ -368,9 +364,9 @@ pio.renderers.default = "notebook_connected"
 fig.show()
 ```
 
-## STE-04
+## Punt de mesura STE-04
 
-Plots for measurement point STE-04:
+Gràfiques de les mesures fetes en el punt STE-04:
 
 ### 20251007_100341_STE-04.csv (2025-10-07)
 
@@ -448,9 +444,51 @@ pio.renderers.default = "notebook_connected"
 fig.show()
 ```
 
-## STE-07
+## Punt de mesura STE-05
 
-Plots for measurement point STE-07:
+Gràfiques de les mesures fetes en el punt STE-05:
+
+### 20260316_085832_STE-05.csv (2026-03-16)
+
+```{python}
+import sys, os
+sys.path.append(os.path.abspath("src"))
+from create_plots import load_csv, create_plotly_plot
+import plotly.io as pio
+
+csv_path = r"data/raw\20260316_085832_STE-05.csv"
+variable = "A Flow velocity [m/s]"
+
+df = load_csv(csv_path)
+fig = create_plotly_plot(df, variable, csv_path)
+
+# Show interactive plot in HTML
+pio.renderers.default = "notebook_connected"
+fig.show()
+```
+
+### 20260316_134917_STE-05.csv (2026-03-16)
+
+```{python}
+import sys, os
+sys.path.append(os.path.abspath("src"))
+from create_plots import load_csv, create_plotly_plot
+import plotly.io as pio
+
+csv_path = r"data/raw\20260316_134917_STE-05.csv"
+variable = "A Flow velocity [m/s]"
+
+df = load_csv(csv_path)
+fig = create_plotly_plot(df, variable, csv_path)
+
+# Show interactive plot in HTML
+pio.renderers.default = "notebook_connected"
+fig.show()
+```
+
+## Punt de mesura STE-07
+
+Gràfiques de les mesures fetes en el punt STE-07:
 
 ### 20260219_112332_STE-07.csv (2026-02-19)
 
@@ -528,9 +566,28 @@ pio.renderers.default = "notebook_connected"
 fig.show()
 ```
 
-## STE-08
+### 20260225_140608_STE-07.csv (2026-02-25)
 
-Plots for measurement point STE-08:
+```{python}
+import sys, os
+sys.path.append(os.path.abspath("src"))
+from create_plots import load_csv, create_plotly_plot
+import plotly.io as pio
+
+csv_path = r"data/raw\20260225_140608_STE-07.csv"
+variable = "A Flow velocity [m/s]"
+
+df = load_csv(csv_path)
+fig = create_plotly_plot(df, variable, csv_path)
+
+# Show interactive plot in HTML
+pio.renderers.default = "notebook_connected"
+fig.show()
+```
+
+## Punt de mesura STE-08
+
+Gràfiques de les mesures fetes en el punt STE-08:
 
 ### 20251118_024904_STE-08.csv (2025-11-18)
 
@@ -551,9 +608,47 @@ pio.renderers.default = "notebook_connected"
 fig.show()
 ```
 
-## STE-10
+### 20260309_103006_STE-08.csv (2026-03-09)
 
-Plots for measurement point STE-10:
+```{python}
+import sys, os
+sys.path.append(os.path.abspath("src"))
+from create_plots import load_csv, create_plotly_plot
+import plotly.io as pio
+
+csv_path = r"data/raw\20260309_103006_STE-08.csv"
+variable = "A Flow velocity [m/s]"
+
+df = load_csv(csv_path)
+fig = create_plotly_plot(df, variable, csv_path)
+
+# Show interactive plot in HTML
+pio.renderers.default = "notebook_connected"
+fig.show()
+```
+
+### 20260309_133323_STE-08.csv (2026-03-09)
+
+```{python}
+import sys, os
+sys.path.append(os.path.abspath("src"))
+from create_plots import load_csv, create_plotly_plot
+import plotly.io as pio
+
+csv_path = r"data/raw\20260309_133323_STE-08.csv"
+variable = "A Flow velocity [m/s]"
+
+df = load_csv(csv_path)
+fig = create_plotly_plot(df, variable, csv_path)
+
+# Show interactive plot in HTML
+pio.renderers.default = "notebook_connected"
+fig.show()
+```
+
+## Punt de mesura STE-10
+
+Gràfiques de les mesures fetes en el punt STE-10:
 
 ### 20251119_112337_STE-10.csv (2025-11-19)
 
@@ -612,9 +707,9 @@ pio.renderers.default = "notebook_connected"
 fig.show()
 ```
 
-## STE-11
+## Punt de mesura STE-11
 
-Plots for measurement point STE-11:
+Gràfiques de les mesures fetes en el punt STE-11:
 
 ### 20251121_025609_STE-11.csv (2025-11-21)
 

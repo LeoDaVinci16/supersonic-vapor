@@ -40,7 +40,7 @@ sorted_points = sorted(files_by_point.keys(), key=point_sort_key)
 # 2️⃣ Write QMD file for HTML only
 with open(qmd_file, "w", encoding="utf-8") as f:
     f.write(f"""---
-title: "Automated Measurement Report (HTML)"
+title: "Informe dels cabals (HTML)"
 author: Arnau Coronado Nadal
 execute:
   cache: true
@@ -53,8 +53,8 @@ format:
 
     # Iterate over points and CSVs
     for point, files in sorted(files_by_point.items()):
-        f.write(f"## {point}\n\n")
-        f.write(f"Plots for measurement point {point}:\n\n")
+        f.write(f"## Punt de mesura {point}\n\n")
+        f.write(f"Gràfiques de les mesures fetes en el punt {point}:\n\n")
         
         for csv_file in files:
             csv_path = os.path.join(csv_folder, csv_file)
